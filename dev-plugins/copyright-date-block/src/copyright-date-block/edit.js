@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import {
+	InspectorControls,
+	MediaUploadCheck,
+	MediaUpload,
+	useBlockProps,
+} from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,24 +36,53 @@ import { PanelBody, TextControl, ToggleControl } from "@wordpress/components";
  *
  * @return {Element} Element to render.
  */
+
+import { useEffect } from "react";
+
 export default function Edit({ attributes, setAttributes }) {
-	const { showStartingYear, startingYear } = attributes;
+	const { fallbackCurrentYear, showStartingYear, startingYear } = attributes;
+	// const [blocks, updateBlocks] = React.useState([]);
 	const currentYear = new Date().getFullYear().toString();
+
+	console.log(useBlockProps());
+
+	useEffect(() => {
+		if (currentYear !== fallbackCurrentYear) {
+			setAttributes({ fallbackCurrentYear: currentYear });
+		}
+	}, [fallbackCurrentYear, showStartingYear, startingYear]);
+
+	let displayDate;
+	if (showStartingYear && startingYear) {
+		displayDate = startingYear + "-" + currentYear;
+	} else {
+		displayDate = currentYear;
+	}
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__("Setting", "Copyright-date-block")}>
-					<TextControl
-						label={__("Starting year", "Copyright-date-block")}
-						value={startingYear || ""}
-						onChange={(value) => {
-							setAttributes({ startingYear: value });
+				<PanelBody title={__("Setting", "copyright-date-block")}>
+					<ToggleControl
+						label={__("Show starting year", "copyright-date-block")}
+						checked={showStartingYear}
+						value={showStartingYear}
+						onChange={() => {
+							setAttributes({ showStartingYear: !showStartingYear });
 						}}
 					/>
+					{showStartingYear && (
+						<TextControl
+							label={__("Starting year", "copyright-date-block")}
+							value={startingYear || ""}
+							onChange={(value) => {
+								setAttributes({ startingYear: value });
+							}}
+						/>
+					)}
 				</PanelBody>
 			</InspectorControls>
-			<p {...useBlockProps()}>© {currentYear}</p>
+			<p {...useBlockProps()}>© {displayDate}</p>
 		</>
 	);
 }

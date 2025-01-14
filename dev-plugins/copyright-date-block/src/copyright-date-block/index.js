@@ -18,6 +18,7 @@ import { registerBlockType } from "@wordpress/blocks";
  * Internal dependencies
  */
 import Edit from "./edit";
+import Save from "./save";
 import metadata from "./block.json";
 
 const calendarIcon = (
@@ -42,4 +43,5 @@ registerBlockType(metadata.name, {
 	 * @see ./edit.js
 	 */
 	edit: Edit,
+	save: Save,
 });
