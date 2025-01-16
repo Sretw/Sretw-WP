@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import {
+	InnerBlocks,
+	InspectorControls,
+	useBlockProps,
+	useInnerBlocksProps,
+} from "@wordpress/block-editor";
 
 import { FontSizePicker, PanelBody, TextControl } from "@wordpress/components";
 
@@ -22,7 +27,6 @@ import { FontSizePicker, PanelBody, TextControl } from "@wordpress/components";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -64,7 +68,8 @@ export default function Edit(props) {
 		setAttributes,
 	} = props;
 	const blockProps = useBlockProps();
-	console.log(props, blockProps);
+	const innerBlockProps = useInnerBlocksProps();
+	console.log(props);
 
 	return (
 		<>
@@ -78,24 +83,24 @@ export default function Edit(props) {
 						onChange={(value) => setAttributes({ title: value })}
 					/>
 					{title && (
-						<FontSizePicker
-							__next40pxDefaultSize
-							fontSizes={fontSizes}
-							value={titleFontSize}
-							fallbackFontSize={fallbackFontSize}
-							onChange={(newFontSize) => {
-								setAttributes({ titleFontSize: newFontSize });
-							}}
-						/>
-					)}
-					{title && (
-						<TextControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
-							label={__("Font weight", "sretw-card")}
-							value={titleFontWeight || ""}
-							onChange={(value) => setAttributes({ titleFontWeight: value })}
-						/>
+						<>
+							<FontSizePicker
+								__next40pxDefaultSize
+								fontSizes={fontSizes}
+								value={titleFontSize}
+								fallbackFontSize={fallbackFontSize}
+								onChange={(newFontSize) => {
+									setAttributes({ titleFontSize: newFontSize });
+								}}
+							/>
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={__("Font weight", "sretw-card")}
+								value={titleFontWeight || ""}
+								onChange={(value) => setAttributes({ titleFontWeight: value })}
+							/>
+						</>
 					)}
 				</PanelBody>
 				<PanelBody title={__("Subtitle", "sretw-card")}>
@@ -107,24 +112,26 @@ export default function Edit(props) {
 						onChange={(value) => setAttributes({ subtitle: value })}
 					/>
 					{subtitle && (
-						<FontSizePicker
-							__next40pxDefaultSize
-							fontSizes={fontSizes}
-							value={subtitleFontSize}
-							fallbackFontSize={fallbackFontSize}
-							onChange={(newFontSize) => {
-								setAttributes({ subtitleFontSize: newFontSize });
-							}}
-						/>
-					)}
-					{subtitle && (
-						<TextControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
-							label={__("Font weight", "sretw-card")}
-							value={subtitleFontWeight || ""}
-							onChange={(value) => setAttributes({ subtitleFontWeight: value })}
-						/>
+						<>
+							<FontSizePicker
+								__next40pxDefaultSize
+								fontSizes={fontSizes}
+								value={subtitleFontSize}
+								fallbackFontSize={fallbackFontSize}
+								onChange={(newFontSize) => {
+									setAttributes({ subtitleFontSize: newFontSize });
+								}}
+							/>
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={__("Font weight", "sretw-card")}
+								value={subtitleFontWeight || ""}
+								onChange={(value) =>
+									setAttributes({ subtitleFontWeight: value })
+								}
+							/>
+						</>
 					)}
 				</PanelBody>
 			</InspectorControls>
@@ -133,8 +140,8 @@ export default function Edit(props) {
 					<div
 						className="text-center title"
 						style={{
-							"font-size": titleFontSize,
-							"font-weight": titleFontWeight || "normal",
+							fontSize: titleFontSize,
+							fontWeight: titleFontWeight || "normal",
 						}}
 					>
 						{title}
@@ -144,13 +151,22 @@ export default function Edit(props) {
 					<div
 						className="text-center subtitle"
 						style={{
-							"font-size": subtitleFontSize,
-							"font-weight": subtitleFontWeight || "normal",
+							fontSize: subtitleFontSize,
+							fontWeight: subtitleFontWeight || "normal",
 						}}
 					>
 						{subtitle}
 					</div>
 				)}
+				<div className="image-container">
+					<InnerBlocks
+						{...innerBlockProps}
+						template={[["core/image", {}]]}
+						templateLock="all"
+						defaultBlock={{ name: "core/image", attributes: {} }}
+						allowedBlocks={["core/image"]}
+					/>
+				</div>
 			</div>
 		</>
 	);

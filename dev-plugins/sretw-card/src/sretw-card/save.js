@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +15,46 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save(props) {
+	const {
+		attributes: {
+			title,
+			titleFontSize,
+			titleFontWeight,
+			subtitle,
+			subtitleFontSize,
+			subtitleFontWeight,
+		},
+	} = props;
+	const blockProps = useBlockProps.save();
+	console.log(props);
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Sretw Card – hello from the saved content!' }
-		</p>
+		<div {...blockProps}>
+			{title && (
+				<div
+					className="text-center title"
+					style={{
+						fontSize: titleFontSize,
+						fontWeight: titleFontWeight || "normal",
+					}}
+				>
+					{title}
+				</div>
+			)}
+			{subtitle && (
+				<div
+					className="text-center subtitle"
+					style={{
+						fontSize: subtitleFontSize,
+						fontWeight: subtitleFontWeight || "normal",
+					}}
+				>
+					{subtitle}
+				</div>
+			)}
+			<div className="image-container">
+				<InnerBlocks.Content />
+			</div>
+		</div>
 	);
 }
