@@ -6,7 +6,7 @@
   "title": "Sretw Card",
   "category": "widgets",
   "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "description": "Sretw custom card block with title, subtitle and image",
   "example": {},
   "attributes": {
     "title": {

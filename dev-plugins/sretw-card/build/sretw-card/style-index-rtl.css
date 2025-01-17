@@ -18,14 +18,13 @@
   height: fit-content;
   transition: all 0.3s ease-in-out;
 }
-.wp-block-create-block-sretw-card .text-center {
-  text-align: center;
-}
 .wp-block-create-block-sretw-card .title {
-  padding: 4px;
+  padding: 4px 4px 0px 4px;
+  margin-bottom: 2px;
 }
 .wp-block-create-block-sretw-card .subtitle {
-  padding: 4px;
+  padding: 0px 4px 0px 4px;
+  margin-bottom: 8px;
 }
 .wp-block-create-block-sretw-card .image-container {
   display: flex;

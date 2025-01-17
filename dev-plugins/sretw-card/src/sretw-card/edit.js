@@ -19,7 +19,14 @@ import {
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
 
-import { FontSizePicker, PanelBody, TextControl } from "@wordpress/components";
+import {
+	FontSizePicker,
+	PanelBody,
+	TextControl,
+	Flex,
+	FlexItem,
+	SelectControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -28,8 +35,7 @@ import { FontSizePicker, PanelBody, TextControl } from "@wordpress/components";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import { Flex } from "@wordpress/components";
-import { FlexItem } from "@wordpress/components";
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -57,6 +63,82 @@ const fontSizes = [
 	},
 ];
 const fallbackFontSize = 12;
+
+const fontWeights = [
+	{
+		label: "normal",
+		value: "normal",
+	},
+	{
+		label: "bold",
+		value: "bold",
+	},
+	{
+		label: "lighter",
+		value: "lighter",
+	},
+	{
+		label: "bolder",
+		value: "bolder",
+	},
+	{
+		label: "100",
+		value: "100",
+	},
+	{
+		label: "200",
+		value: "200",
+	},
+	{
+		label: "300",
+		value: "300",
+	},
+	{
+		label: "400",
+		value: "400",
+	},
+	{
+		label: "500",
+		value: "500",
+	},
+	{
+		label: "600",
+		value: "600",
+	},
+	{
+		label: "700",
+		value: "700",
+	},
+	{
+		label: "800",
+		value: "800",
+	},
+	{
+		label: "900",
+		value: "900",
+	},
+	{
+		label: "inherit",
+		value: "inherit",
+	},
+	{
+		label: "initial",
+		value: "initial",
+	},
+	{
+		label: "revert",
+		value: "revert",
+	},
+	{
+		label: "revert-layer",
+		value: "revert-layer",
+	},
+	{
+		label: "unset",
+		value: "unset",
+	},
+];
+const fallbackFontWeight = "normal";
 
 export default function Edit(props) {
 	const {
@@ -98,11 +180,12 @@ export default function Edit(props) {
 									setAttributes({ titleFontSize: newFontSize });
 								}}
 							/>
-							<TextControl
+							<SelectControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={__("Font weight", "sretw-card")}
-								value={titleFontWeight || ""}
+								value={titleFontWeight || fallbackFontWeight}
+								options={fontWeights}
 								onChange={(value) => setAttributes({ titleFontWeight: value })}
 							/>
 							<Flex direction="column">
@@ -140,11 +223,12 @@ export default function Edit(props) {
 									setAttributes({ subtitleFontSize: newFontSize });
 								}}
 							/>
-							<TextControl
+							<SelectControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={__("Font weight", "sretw-card")}
-								value={subtitleFontWeight || ""}
+								value={subtitleFontWeight || fallbackFontWeight}
+								options={fontWeights}
 								onChange={(value) =>
 									setAttributes({ subtitleFontWeight: value })
 								}
@@ -169,7 +253,7 @@ export default function Edit(props) {
 			<div {...blockProps}>
 				{title && (
 					<div
-						className="text-center title"
+						className="title"
 						style={{
 							fontSize: titleFontSize,
 							fontWeight: titleFontWeight || "normal",
@@ -181,7 +265,7 @@ export default function Edit(props) {
 				)}
 				{subtitle && (
 					<div
-						className="text-center subtitle"
+						className="subtitle"
 						style={{
 							fontSize: subtitleFontSize,
 							fontWeight: subtitleFontWeight || "normal",

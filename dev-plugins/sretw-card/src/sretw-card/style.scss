@@ -14,14 +14,13 @@
 	height: fit-content;
 	transition: all 0.3s ease-in-out;
 
-	.text-center {
-		text-align: center;
-	}
 	.title {
-		padding: 4px;
+		padding: 4px 4px 0px 4px;
+		margin-bottom: 2px;
 	}
 	.subtitle {
-		padding: 4px;
+		padding: 0px 4px 0px 4px;
+		margin-bottom: 8px;
 	}
 	.image-container {
 		display: flex;

@@ -45,7 +45,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -69,6 +68,62 @@ const fontSizes = [{
   size: 36
 }];
 const fallbackFontSize = 12;
+const fontWeights = [{
+  label: "normal",
+  value: "normal"
+}, {
+  label: "bold",
+  value: "bold"
+}, {
+  label: "lighter",
+  value: "lighter"
+}, {
+  label: "bolder",
+  value: "bolder"
+}, {
+  label: "100",
+  value: "100"
+}, {
+  label: "200",
+  value: "200"
+}, {
+  label: "300",
+  value: "300"
+}, {
+  label: "400",
+  value: "400"
+}, {
+  label: "500",
+  value: "500"
+}, {
+  label: "600",
+  value: "600"
+}, {
+  label: "700",
+  value: "700"
+}, {
+  label: "800",
+  value: "800"
+}, {
+  label: "900",
+  value: "900"
+}, {
+  label: "inherit",
+  value: "inherit"
+}, {
+  label: "initial",
+  value: "initial"
+}, {
+  label: "revert",
+  value: "revert"
+}, {
+  label: "revert-layer",
+  value: "revert-layer"
+}, {
+  label: "unset",
+  value: "unset"
+}];
+const fallbackFontWeight = "normal";
 function Edit(props) {
   const {
     attributes: {
@@ -111,11 +166,12 @@ function Edit(props) {
                 titleFontSize: newFontSize
               });
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Font weight", "sretw-card"),
-            value: titleFontWeight || "",
+            value: titleFontWeight || fallbackFontWeight,
+            options: fontWeights,
             onChange: value => setAttributes({
               titleFontWeight: value
             })
@@ -157,11 +213,12 @@ function Edit(props) {
                 subtitleFontSize: newFontSize
               });
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Font weight", "sretw-card"),
-            value: subtitleFontWeight || "",
+            value: subtitleFontWeight || fallbackFontWeight,
+            options: fontWeights,
             onChange: value => setAttributes({
               subtitleFontWeight: value
             })
@@ -185,7 +242,7 @@ function Edit(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       ...blockProps,
       children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "text-center title",
+        className: "title",
         style: {
           fontSize: titleFontSize,
           fontWeight: titleFontWeight || "normal",
@@ -193,7 +250,7 @@ function Edit(props) {
         },
         children: title
       }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "text-center subtitle",
+        className: "subtitle",
         style: {
           fontSize: subtitleFontSize,
           fontWeight: subtitleFontWeight || "normal",
@@ -440,7 +497,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"0.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"0.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Sretw custom card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
