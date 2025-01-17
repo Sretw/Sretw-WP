@@ -21,13 +21,15 @@ export default function save(props) {
 			title,
 			titleFontSize,
 			titleFontWeight,
+			titleAlignment,
 			subtitle,
 			subtitleFontSize,
 			subtitleFontWeight,
+			subtitleAlignment,
 		},
 	} = props;
 	const blockProps = useBlockProps.save();
-	console.log(props);
+	// console.log(props);
 	return (
 		<div {...blockProps}>
 			{title && (
@@ -36,6 +38,7 @@ export default function save(props) {
 					style={{
 						fontSize: titleFontSize,
 						fontWeight: titleFontWeight || "normal",
+						textAlign: titleAlignment || "center",
 					}}
 				>
 					{title}
@@ -47,6 +50,7 @@ export default function save(props) {
 					style={{
 						fontSize: subtitleFontSize,
 						fontWeight: subtitleFontWeight || "normal",
+						textAlign: subtitleAlignment || "center",
 					}}
 				>
 					{subtitle}

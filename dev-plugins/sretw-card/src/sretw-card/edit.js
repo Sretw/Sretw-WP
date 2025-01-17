@@ -14,6 +14,7 @@ import { __ } from "@wordpress/i18n";
 import {
 	InnerBlocks,
 	InspectorControls,
+	AlignmentToolbar,
 	useBlockProps,
 	useInnerBlocksProps,
 } from "@wordpress/block-editor";
@@ -27,6 +28,8 @@ import { FontSizePicker, PanelBody, TextControl } from "@wordpress/components";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
+import { Flex } from "@wordpress/components";
+import { FlexItem } from "@wordpress/components";
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -61,20 +64,22 @@ export default function Edit(props) {
 			title,
 			titleFontSize,
 			titleFontWeight,
+			titleAlignment,
 			subtitle,
 			subtitleFontSize,
 			subtitleFontWeight,
+			subtitleAlignment,
 		},
 		setAttributes,
 	} = props;
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps();
-	console.log(props);
+	// console.log(props);
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__("Title", "sretw-card")}>
+				<PanelBody title={__("Title", "sretw-card")} initialOpen={false}>
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -100,10 +105,23 @@ export default function Edit(props) {
 								value={titleFontWeight || ""}
 								onChange={(value) => setAttributes({ titleFontWeight: value })}
 							/>
+							<Flex direction="column">
+								<FlexItem>
+									<span>{__("Text alignment ")}</span>
+								</FlexItem>
+								<FlexItem>
+									<AlignmentToolbar
+										value={titleAlignment || "center"}
+										onChange={(value) =>
+											setAttributes({ titleAlignment: value })
+										}
+									/>
+								</FlexItem>
+							</Flex>
 						</>
 					)}
 				</PanelBody>
-				<PanelBody title={__("Subtitle", "sretw-card")}>
+				<PanelBody title={__("Subtitle", "sretw-card")} initialOpen={false}>
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -131,6 +149,19 @@ export default function Edit(props) {
 									setAttributes({ subtitleFontWeight: value })
 								}
 							/>
+							<Flex direction="column">
+								<FlexItem>
+									<span>{__("Text alignment ")}</span>
+								</FlexItem>
+								<FlexItem>
+									<AlignmentToolbar
+										value={subtitleAlignment || "center"}
+										onChange={(value) =>
+											setAttributes({ subtitleAlignment: value })
+										}
+									/>
+								</FlexItem>
+							</Flex>
 						</>
 					)}
 				</PanelBody>
@@ -142,6 +173,7 @@ export default function Edit(props) {
 						style={{
 							fontSize: titleFontSize,
 							fontWeight: titleFontWeight || "normal",
+							textAlign: titleAlignment || "center",
 						}}
 					>
 						{title}
@@ -153,6 +185,7 @@ export default function Edit(props) {
 						style={{
 							fontSize: subtitleFontSize,
 							fontWeight: subtitleFontWeight || "normal",
+							textAlign: subtitleAlignment || "center",
 						}}
 					>
 						{subtitle}

@@ -44,6 +44,8 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 
+
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -73,19 +75,23 @@ function Edit(props) {
       title,
       titleFontSize,
       titleFontWeight,
+      titleAlignment,
       subtitle,
       subtitleFontSize,
-      subtitleFontWeight
+      subtitleFontWeight,
+      subtitleAlignment
     },
     setAttributes
   } = props;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const innerBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)();
-  console.log(props);
+  // console.log(props);
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Title", "sretw-card"),
+        initialOpen: false,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           __next40pxDefaultSize: true,
           __nextHasNoMarginBottom: true,
@@ -113,10 +119,25 @@ function Edit(props) {
             onChange: value => setAttributes({
               titleFontWeight: value
             })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+            direction: "column",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text alignment ")
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
+                value: titleAlignment || "center",
+                onChange: value => setAttributes({
+                  titleAlignment: value
+                })
+              })
+            })]
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Subtitle", "sretw-card"),
+        initialOpen: false,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           __next40pxDefaultSize: true,
           __nextHasNoMarginBottom: true,
@@ -144,6 +165,20 @@ function Edit(props) {
             onChange: value => setAttributes({
               subtitleFontWeight: value
             })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+            direction: "column",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text alignment ")
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
+                value: subtitleAlignment || "center",
+                onChange: value => setAttributes({
+                  subtitleAlignment: value
+                })
+              })
+            })]
           })]
         })]
       })]
@@ -153,14 +188,16 @@ function Edit(props) {
         className: "text-center title",
         style: {
           fontSize: titleFontSize,
-          fontWeight: titleFontWeight || "normal"
+          fontWeight: titleFontWeight || "normal",
+          textAlign: titleAlignment || "center"
         },
         children: title
       }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "text-center subtitle",
         style: {
           fontSize: subtitleFontSize,
-          fontWeight: subtitleFontWeight || "normal"
+          fontWeight: subtitleFontWeight || "normal",
+          textAlign: subtitleAlignment || "center"
         },
         children: subtitle
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -287,27 +324,31 @@ function save(props) {
       title,
       titleFontSize,
       titleFontWeight,
+      titleAlignment,
       subtitle,
       subtitleFontSize,
-      subtitleFontWeight
+      subtitleFontWeight,
+      subtitleAlignment
     }
   } = props;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
-  console.log(props);
+  // console.log(props);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ...blockProps,
     children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "text-center title",
       style: {
         fontSize: titleFontSize,
-        fontWeight: titleFontWeight || "normal"
+        fontWeight: titleFontWeight || "normal",
+        textAlign: titleAlignment || "center"
       },
       children: title
     }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "text-center subtitle",
       style: {
         fontSize: subtitleFontSize,
-        fontWeight: subtitleFontWeight || "normal"
+        fontWeight: subtitleFontWeight || "normal",
+        textAlign: subtitleAlignment || "center"
       },
       children: subtitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -399,7 +440,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"0.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"0.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

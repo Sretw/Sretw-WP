@@ -12,9 +12,11 @@
 		"title": { "type": "string" },
 		"titleFontSize": { "type": "integer" },
 		"titleFontWeight": { "type": "string" },
+		"titleAlignment": { "type": "string" },
 		"subtitle": { "type": "string" },
 		"subtitleFontSize": { "type": "integer" },
-		"subtitleFontWeight": { "type": "string" }
+		"subtitleFontWeight": { "type": "string" },
+		"subtitleAlignment": { "type": "string" }
 	},
 	"supports": {
 		"color": { "background": false, "text": true },
