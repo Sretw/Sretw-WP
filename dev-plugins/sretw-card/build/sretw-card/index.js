@@ -10,8 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   fallbackCardEnalrgeDuration: () => (/* binding */ fallbackCardEnalrgeDuration),
 /* harmony export */   fallbackCardEnalrgeScale: () => (/* binding */ fallbackCardEnalrgeScale),
-/* harmony export */   fallbackCardEnalrgeSpeed: () => (/* binding */ fallbackCardEnalrgeSpeed),
 /* harmony export */   fallbackFontSize: () => (/* binding */ fallbackFontSize),
 /* harmony export */   fallbackFontWeight: () => (/* binding */ fallbackFontWeight),
 /* harmony export */   fontSizes: () => (/* binding */ fontSizes),
@@ -91,7 +91,7 @@ const fontWeights = [{
 }];
 const fallbackFontWeight = "normal";
 const fallbackCardEnalrgeScale = 1.2;
-const fallbackCardEnalrgeSpeed = 0.65;
+const fallbackCardEnalrgeDuration = 0.65;
 
 /***/ }),
 
@@ -152,104 +152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// const fontSizes = [
-// 	{
-// 		name: __("S"),
-// 		slug: "small",
-// 		size: 13,
-// 	},
-// 	{
-// 		name: __("M"),
-// 		slug: "medium",
-// 		size: 20,
-// 	},
-// 	{
-// 		name: __("L"),
-// 		slug: "big",
-// 		size: 36,
-// 	},
-// ];
-// const fallbackFontSize = 12;
-
-// const fontWeights = [
-// 	{
-// 		label: "normal",
-// 		value: "normal",
-// 	},
-// 	{
-// 		label: "bold",
-// 		value: "bold",
-// 	},
-// 	{
-// 		label: "lighter",
-// 		value: "lighter",
-// 	},
-// 	{
-// 		label: "bolder",
-// 		value: "bolder",
-// 	},
-// 	{
-// 		label: "100",
-// 		value: "100",
-// 	},
-// 	{
-// 		label: "200",
-// 		value: "200",
-// 	},
-// 	{
-// 		label: "300",
-// 		value: "300",
-// 	},
-// 	{
-// 		label: "400",
-// 		value: "400",
-// 	},
-// 	{
-// 		label: "500",
-// 		value: "500",
-// 	},
-// 	{
-// 		label: "600",
-// 		value: "600",
-// 	},
-// 	{
-// 		label: "700",
-// 		value: "700",
-// 	},
-// 	{
-// 		label: "800",
-// 		value: "800",
-// 	},
-// 	{
-// 		label: "900",
-// 		value: "900",
-// 	},
-// 	{
-// 		label: "inherit",
-// 		value: "inherit",
-// 	},
-// 	{
-// 		label: "initial",
-// 		value: "initial",
-// 	},
-// 	{
-// 		label: "revert",
-// 		value: "revert",
-// 	},
-// 	{
-// 		label: "revert-layer",
-// 		value: "revert-layer",
-// 	},
-// 	{
-// 		label: "unset",
-// 		value: "unset",
-// 	},
-// ];
-// const fallbackFontWeight = "normal";
-
-// const fallbackCardEnalrgeScale = 1.2;
-
-// const fallbackCardEnalrgeSpeed = 0.65;
 
 function Edit(props) {
   const {
@@ -264,7 +166,7 @@ function Edit(props) {
       subtitleAlignment,
       cardEnlarge,
       cardEnlargeScale,
-      cardEnlargeSpeed
+      cardEnlargeDuration
     },
     setAttributes
   } = props;
@@ -272,7 +174,7 @@ function Edit(props) {
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
       "--card-enlarge-scale": String(cardEnlargeScale) || `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
-      "--card-enlarge-speed": `${String(cardEnlargeSpeed)}` || `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeSpeed}s`
+      "--card-enlarge-speed": `${String(cardEnlargeDuration)}` || `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
     }
   });
   const innerBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)();
@@ -292,7 +194,7 @@ function Edit(props) {
             //pre-set value for scale
             cardEnlargeScale: cardEnlargeScale ? `${cardEnlargeScale}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
             // pre-set value for speed
-            cardEnlargeSpeed: cardEnlargeSpeed ? `${cardEnlargeSpeed}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeSpeed}s`
+            cardEnlargeDuration: cardEnlargeDuration ? `${cardEnlargeDuration}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
           })
         }), cardEnlarge && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
@@ -307,12 +209,12 @@ function Edit(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge speed", "srewt-card"),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge duration", "srewt-card"),
             help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Unit in seconds", "sretw-card"),
             type: "number",
-            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeSpeedValue)(cardEnlargeSpeed),
+            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeDurationValue)(cardEnlargeDuration),
             onChange: value => setAttributes({
-              cardEnlargeSpeed: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
+              cardEnlargeDuration: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
             })
           })]
         })]
@@ -560,14 +462,14 @@ function save(props) {
       subtitleAlignment,
       cardEnlarge,
       cardEnlargeScale,
-      cardEnlargeSpeed
+      cardEnlargeDuration
     }
   } = props;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
       "--card-enlarge-scale": cardEnlargeScale || "1.2",
-      "--card-enlarge-speed": cardEnlargeSpeed ? `${String(cardEnlargeSpeed)}` : "0.65s"
+      "--card-enlarge-speed": cardEnlargeDuration ? `${String(cardEnlargeDuration)}` : "0.65s"
     }
   });
   // console.log(props);
@@ -608,22 +510,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   clamp0Inf: () => (/* binding */ clamp0Inf),
 /* harmony export */   clamp1Inf: () => (/* binding */ clamp1Inf),
-/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue),
-/* harmony export */   getCardEnlargeSpeedValue: () => (/* binding */ getCardEnlargeSpeedValue)
+/* harmony export */   getCardEnlargeDurationValue: () => (/* binding */ getCardEnlargeDurationValue),
+/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue)
 /* harmony export */ });
 /* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
 
 
 /**
- * Convert getCardEnlargeSpeedValue from string to number
+ * Convert getCardEnlargeDurationValue from string to number
  * @param {*} value in `string` e.g 1.2s
  * @returns
  * - `number` if value can be parsed to float
  * - return fallback value if value is `undefined`
  * - return `0` if value can not be parsed to float
  */
-const getCardEnlargeSpeedValue = value => {
-  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeSpeed;
+const getCardEnlargeDurationValue = value => {
+  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeDuration;
   let parsedValue = parseFloat(value);
   if (!isNaN(parsedValue)) {
     return parsedValue;
@@ -729,7 +631,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeSpeed":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.1","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeDuration":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

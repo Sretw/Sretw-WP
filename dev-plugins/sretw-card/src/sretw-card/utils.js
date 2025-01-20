@@ -1,15 +1,18 @@
-import { fallbackCardEnalrgeScale, fallbackCardEnalrgeSpeed } from "./constant";
+import {
+	fallbackCardEnalrgeScale,
+	fallbackCardEnalrgeDuration,
+} from "./constant";
 
 /**
- * Convert getCardEnlargeSpeedValue from string to number
+ * Convert getCardEnlargeDurationValue from string to number
  * @param {*} value in `string` e.g 1.2s
  * @returns
  * - `number` if value can be parsed to float
  * - return fallback value if value is `undefined`
  * - return `0` if value can not be parsed to float
  */
-export const getCardEnlargeSpeedValue = (value) => {
-	if (value === undefined) return fallbackCardEnalrgeSpeed;
+export const getCardEnlargeDurationValue = (value) => {
+	if (value === undefined) return fallbackCardEnalrgeDuration;
 	let parsedValue = parseFloat(value);
 	if (!isNaN(parsedValue)) {
 		return parsedValue;

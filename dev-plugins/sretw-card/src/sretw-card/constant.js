@@ -97,4 +97,4 @@ export const fallbackFontWeight = "normal";
 
 export const fallbackCardEnalrgeScale = 1.2;
 
-export const fallbackCardEnalrgeSpeed = 0.65;
+export const fallbackCardEnalrgeDuration = 0.65;

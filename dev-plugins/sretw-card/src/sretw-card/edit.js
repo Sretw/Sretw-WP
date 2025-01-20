@@ -50,7 +50,7 @@ import {
 	clamp0Inf,
 	clamp1Inf,
 	getCardEnlargeScaleValue,
-	getCardEnlargeSpeedValue,
+	getCardEnlargeDurationValue,
 } from "./utils";
 import {
 	fontSizes,
@@ -58,106 +58,8 @@ import {
 	fontWeights,
 	fallbackFontWeight,
 	fallbackCardEnalrgeScale,
-	fallbackCardEnalrgeSpeed,
+	fallbackCardEnalrgeDuration,
 } from "./constant";
-// const fontSizes = [
-// 	{
-// 		name: __("S"),
-// 		slug: "small",
-// 		size: 13,
-// 	},
-// 	{
-// 		name: __("M"),
-// 		slug: "medium",
-// 		size: 20,
-// 	},
-// 	{
-// 		name: __("L"),
-// 		slug: "big",
-// 		size: 36,
-// 	},
-// ];
-// const fallbackFontSize = 12;
-
-// const fontWeights = [
-// 	{
-// 		label: "normal",
-// 		value: "normal",
-// 	},
-// 	{
-// 		label: "bold",
-// 		value: "bold",
-// 	},
-// 	{
-// 		label: "lighter",
-// 		value: "lighter",
-// 	},
-// 	{
-// 		label: "bolder",
-// 		value: "bolder",
-// 	},
-// 	{
-// 		label: "100",
-// 		value: "100",
-// 	},
-// 	{
-// 		label: "200",
-// 		value: "200",
-// 	},
-// 	{
-// 		label: "300",
-// 		value: "300",
-// 	},
-// 	{
-// 		label: "400",
-// 		value: "400",
-// 	},
-// 	{
-// 		label: "500",
-// 		value: "500",
-// 	},
-// 	{
-// 		label: "600",
-// 		value: "600",
-// 	},
-// 	{
-// 		label: "700",
-// 		value: "700",
-// 	},
-// 	{
-// 		label: "800",
-// 		value: "800",
-// 	},
-// 	{
-// 		label: "900",
-// 		value: "900",
-// 	},
-// 	{
-// 		label: "inherit",
-// 		value: "inherit",
-// 	},
-// 	{
-// 		label: "initial",
-// 		value: "initial",
-// 	},
-// 	{
-// 		label: "revert",
-// 		value: "revert",
-// 	},
-// 	{
-// 		label: "revert-layer",
-// 		value: "revert-layer",
-// 	},
-// 	{
-// 		label: "unset",
-// 		value: "unset",
-// 	},
-// ];
-// const fallbackFontWeight = "normal";
-
-// const fallbackCardEnalrgeScale = 1.2;
-
-// const fallbackCardEnalrgeSpeed = 0.65;
 
 export default function Edit(props) {
 	const {
@@ -172,7 +74,7 @@ export default function Edit(props) {
 			subtitleAlignment,
 			cardEnlarge,
 			cardEnlargeScale,
-			cardEnlargeSpeed,
+			cardEnlargeDuration,
 		},
 		setAttributes,
 	} = props;
@@ -184,7 +86,7 @@ export default function Edit(props) {
 			"--card-enlarge-scale":
 				String(cardEnlargeScale) || `${fallbackCardEnalrgeScale}`,
 			"--card-enlarge-speed":
-				`${String(cardEnlargeSpeed)}` || `${fallbackCardEnalrgeSpeed}s`,
+				`${String(cardEnlargeDuration)}` || `${fallbackCardEnalrgeDuration}s`,
 		},
 	});
 	const innerBlockProps = useInnerBlocksProps();
@@ -206,9 +108,9 @@ export default function Edit(props) {
 									? `${cardEnlargeScale}`
 									: `${fallbackCardEnalrgeScale}`,
 								// pre-set value for speed
-								cardEnlargeSpeed: cardEnlargeSpeed
-									? `${cardEnlargeSpeed}s`
-									: `${fallbackCardEnalrgeSpeed}s`,
+								cardEnlargeDuration: cardEnlargeDuration
+									? `${cardEnlargeDuration}s`
+									: `${fallbackCardEnalrgeDuration}s`,
 							})
 						}
 					/>
@@ -229,13 +131,13 @@ export default function Edit(props) {
 							<TextControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
-								label={__("Hover enlarge speed", "srewt-card")}
+								label={__("Hover enlarge duration", "srewt-card")}
 								help={__("Unit in seconds", "sretw-card")}
 								type="number"
-								value={getCardEnlargeSpeedValue(cardEnlargeSpeed)}
+								value={getCardEnlargeDurationValue(cardEnlargeDuration)}
 								onChange={(value) =>
 									setAttributes({
-										cardEnlargeSpeed: `${clamp0Inf(parseFloat(value))}s`,
+										cardEnlargeDuration: `${clamp0Inf(parseFloat(value))}s`,
 									})
 								}
 							/>

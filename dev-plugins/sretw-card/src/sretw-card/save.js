@@ -28,7 +28,7 @@ export default function save(props) {
 			subtitleAlignment,
 			cardEnlarge,
 			cardEnlargeScale,
-			cardEnlargeSpeed,
+			cardEnlargeDuration,
 		},
 	} = props;
 	const blockProps = useBlockProps.save({
@@ -37,8 +37,8 @@ export default function save(props) {
 			: "wp-block-create-block-sretw-card",
 		style: {
 			"--card-enlarge-scale": cardEnlargeScale || "1.2",
-			"--card-enlarge-speed": cardEnlargeSpeed
-				? `${String(cardEnlargeSpeed)}`
+			"--card-enlarge-speed": cardEnlargeDuration
+				? `${String(cardEnlargeDuration)}`
 				: "0.65s",
 		},
 	});
