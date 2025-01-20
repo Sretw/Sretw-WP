@@ -2,57 +2,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/sretw-card/edit.js":
-/*!********************************!*\
-  !*** ./src/sretw-card/edit.js ***!
-  \********************************/
+/***/ "./src/sretw-card/constant.js":
+/*!************************************!*\
+  !*** ./src/sretw-card/constant.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */   fallbackCardEnalrgeScale: () => (/* binding */ fallbackCardEnalrgeScale),
+/* harmony export */   fallbackCardEnalrgeSpeed: () => (/* binding */ fallbackCardEnalrgeSpeed),
+/* harmony export */   fallbackFontSize: () => (/* binding */ fallbackFontSize),
+/* harmony export */   fallbackFontWeight: () => (/* binding */ fallbackFontWeight),
+/* harmony export */   fontSizes: () => (/* binding */ fontSizes),
+/* harmony export */   fontWeights: () => (/* binding */ fontWeights)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/sretw-card/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
 
 const fontSizes = [{
   name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("S"),
@@ -124,6 +90,167 @@ const fontWeights = [{
   value: "unset"
 }];
 const fallbackFontWeight = "normal";
+const fallbackCardEnalrgeScale = 1.2;
+const fallbackCardEnalrgeSpeed = 0.65;
+
+/***/ }),
+
+/***/ "./src/sretw-card/edit.js":
+/*!********************************!*\
+  !*** ./src/sretw-card/edit.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/sretw-card/editor.scss");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/sretw-card/utils.js");
+/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+
+
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+
+
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @return {Element} Element to render.
+ */
+
+
+
+// const fontSizes = [
+// 	{
+// 		name: __("S"),
+// 		slug: "small",
+// 		size: 13,
+// 	},
+// 	{
+// 		name: __("M"),
+// 		slug: "medium",
+// 		size: 20,
+// 	},
+// 	{
+// 		name: __("L"),
+// 		slug: "big",
+// 		size: 36,
+// 	},
+// ];
+// const fallbackFontSize = 12;
+
+// const fontWeights = [
+// 	{
+// 		label: "normal",
+// 		value: "normal",
+// 	},
+// 	{
+// 		label: "bold",
+// 		value: "bold",
+// 	},
+// 	{
+// 		label: "lighter",
+// 		value: "lighter",
+// 	},
+// 	{
+// 		label: "bolder",
+// 		value: "bolder",
+// 	},
+// 	{
+// 		label: "100",
+// 		value: "100",
+// 	},
+// 	{
+// 		label: "200",
+// 		value: "200",
+// 	},
+// 	{
+// 		label: "300",
+// 		value: "300",
+// 	},
+// 	{
+// 		label: "400",
+// 		value: "400",
+// 	},
+// 	{
+// 		label: "500",
+// 		value: "500",
+// 	},
+// 	{
+// 		label: "600",
+// 		value: "600",
+// 	},
+// 	{
+// 		label: "700",
+// 		value: "700",
+// 	},
+// 	{
+// 		label: "800",
+// 		value: "800",
+// 	},
+// 	{
+// 		label: "900",
+// 		value: "900",
+// 	},
+// 	{
+// 		label: "inherit",
+// 		value: "inherit",
+// 	},
+// 	{
+// 		label: "initial",
+// 		value: "initial",
+// 	},
+// 	{
+// 		label: "revert",
+// 		value: "revert",
+// 	},
+// 	{
+// 		label: "revert-layer",
+// 		value: "revert-layer",
+// 	},
+// 	{
+// 		label: "unset",
+// 		value: "unset",
+// 	},
+// ];
+// const fallbackFontWeight = "normal";
+
+// const fallbackCardEnalrgeScale = 1.2;
+
+// const fallbackCardEnalrgeSpeed = 0.65;
+
 function Edit(props) {
   const {
     attributes: {
@@ -134,20 +261,65 @@ function Edit(props) {
       subtitle,
       subtitleFontSize,
       subtitleFontWeight,
-      subtitleAlignment
+      subtitleAlignment,
+      cardEnlarge,
+      cardEnlargeScale,
+      cardEnlargeSpeed
     },
     setAttributes
   } = props;
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+    className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
+    style: {
+      "--card-enlarge-scale": String(cardEnlargeScale) || `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
+      "--card-enlarge-speed": `${String(cardEnlargeSpeed)}` || `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeSpeed}s`
+    }
+  });
   const innerBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)();
   // console.log(props);
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Card", "sretw-card"),
+        initialOpen: false,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          __nextHasNoMarginBottom: true,
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge", "sretw-card"),
+          checked: cardEnlarge || false,
+          onChange: value => setAttributes({
+            cardEnlarge: value,
+            //pre-set value for scale
+            cardEnlargeScale: cardEnlargeScale ? `${cardEnlargeScale}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
+            // pre-set value for speed
+            cardEnlargeSpeed: cardEnlargeSpeed ? `${cardEnlargeSpeed}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeSpeed}s`
+          })
+        }), cardEnlarge && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            __next40pxDefaultSize: true,
+            __nextHasNoMarginBottom: true,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge scale", "srewt-card"),
+            type: "number",
+            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeScaleValue)(cardEnlargeScale),
+            onChange: value => setAttributes({
+              cardEnlargeScale: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp1Inf)(parseFloat(value))}`
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            __next40pxDefaultSize: true,
+            __nextHasNoMarginBottom: true,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge speed", "srewt-card"),
+            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Unit in seconds", "sretw-card"),
+            type: "number",
+            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeSpeedValue)(cardEnlargeSpeed),
+            onChange: value => setAttributes({
+              cardEnlargeSpeed: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Title", "sretw-card"),
         initialOpen: false,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           __next40pxDefaultSize: true,
           __nextHasNoMarginBottom: true,
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text", "sretw-card"),
@@ -155,34 +327,34 @@ function Edit(props) {
           onChange: value => setAttributes({
             title: value
           })
-        }), title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
+        }), title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
             __next40pxDefaultSize: true,
-            fontSizes: fontSizes,
+            fontSizes: _constant__WEBPACK_IMPORTED_MODULE_5__.fontSizes,
             value: titleFontSize,
-            fallbackFontSize: fallbackFontSize,
+            fallbackFontSize: _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackFontSize,
             onChange: newFontSize => {
               setAttributes({
                 titleFontSize: newFontSize
               });
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Font weight", "sretw-card"),
-            value: titleFontWeight || fallbackFontWeight,
-            options: fontWeights,
+            value: titleFontWeight || _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackFontWeight,
+            options: _constant__WEBPACK_IMPORTED_MODULE_5__.fontWeights,
             onChange: value => setAttributes({
               titleFontWeight: value
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
             direction: "column",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                 children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text alignment ")
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
                 value: titleAlignment || "center",
                 onChange: value => setAttributes({
                   titleAlignment: value
@@ -191,10 +363,10 @@ function Edit(props) {
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Subtitle", "sretw-card"),
         initialOpen: false,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           __next40pxDefaultSize: true,
           __nextHasNoMarginBottom: true,
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text", "sretw-card"),
@@ -202,34 +374,34 @@ function Edit(props) {
           onChange: value => setAttributes({
             subtitle: value
           })
-        }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
+        }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
             __next40pxDefaultSize: true,
-            fontSizes: fontSizes,
+            fontSizes: _constant__WEBPACK_IMPORTED_MODULE_5__.fontSizes,
             value: subtitleFontSize,
-            fallbackFontSize: fallbackFontSize,
+            fallbackFontSize: _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackFontSize,
             onChange: newFontSize => {
               setAttributes({
                 subtitleFontSize: newFontSize
               });
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Font weight", "sretw-card"),
-            value: subtitleFontWeight || fallbackFontWeight,
-            options: fontWeights,
+            value: subtitleFontWeight || _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackFontWeight,
+            options: _constant__WEBPACK_IMPORTED_MODULE_5__.fontWeights,
             onChange: value => setAttributes({
               subtitleFontWeight: value
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
             direction: "column",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                 children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text alignment ")
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
                 value: subtitleAlignment || "center",
                 onChange: value => setAttributes({
                   subtitleAlignment: value
@@ -239,9 +411,9 @@ function Edit(props) {
           })]
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blockProps,
-      children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "title",
         style: {
           fontSize: titleFontSize,
@@ -249,7 +421,7 @@ function Edit(props) {
           textAlign: titleAlignment || "center"
         },
         children: title
-      }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "subtitle",
         style: {
           fontSize: subtitleFontSize,
@@ -257,9 +429,9 @@ function Edit(props) {
           textAlign: subtitleAlignment || "center"
         },
         children: subtitle
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "image-container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
           ...innerBlockProps,
           template: [["core/image", {}]],
           templateLock: "all",
@@ -385,10 +557,19 @@ function save(props) {
       subtitle,
       subtitleFontSize,
       subtitleFontWeight,
-      subtitleAlignment
+      subtitleAlignment,
+      cardEnlarge,
+      cardEnlargeScale,
+      cardEnlargeSpeed
     }
   } = props;
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
+    className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
+    style: {
+      "--card-enlarge-scale": cardEnlargeScale || "1.2",
+      "--card-enlarge-speed": cardEnlargeSpeed ? `${String(cardEnlargeSpeed)}` : "0.65s"
+    }
+  });
   // console.log(props);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ...blockProps,
@@ -414,6 +595,57 @@ function save(props) {
     })]
   });
 }
+
+/***/ }),
+
+/***/ "./src/sretw-card/utils.js":
+/*!*********************************!*\
+  !*** ./src/sretw-card/utils.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clamp0Inf: () => (/* binding */ clamp0Inf),
+/* harmony export */   clamp1Inf: () => (/* binding */ clamp1Inf),
+/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue),
+/* harmony export */   getCardEnlargeSpeedValue: () => (/* binding */ getCardEnlargeSpeedValue)
+/* harmony export */ });
+/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
+
+
+/**
+ * Convert getCardEnlargeSpeedValue from string to number
+ * @param {*} value in `string` e.g 1.2s
+ * @returns
+ * - `number` if value can be parsed to float
+ * - return fallback value if value is `undefined`
+ * - return `0` if value can not be parsed to float
+ */
+const getCardEnlargeSpeedValue = value => {
+  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeSpeed;
+  let parsedValue = parseFloat(value);
+  if (!isNaN(parsedValue)) {
+    return parsedValue;
+  }
+  return 0;
+};
+const getCardEnlargeScaleValue = value => {
+  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeScale;
+  let parsedValue = parseFloat(value);
+  if (!isNaN(parsedValue)) {
+    return parsedValue;
+  }
+  return 1;
+};
+const clamp1Inf = (value, fallback = 1.0) => {
+  if (isNaN(value) || value === undefined || value === null) return fallback;
+  return Math.max(1.0, value);
+};
+const clamp0Inf = (value, fallback = 0.0) => {
+  if (isNaN(value) || value === undefined || value === null) return fallback;
+  return Math.max(0.0, value);
+};
 
 /***/ }),
 
@@ -497,7 +729,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"0.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Sretw custom card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeSpeed":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

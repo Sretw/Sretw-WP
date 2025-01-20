@@ -2,11 +2,11 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "create-block/sretw-card",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "title": "Sretw Card",
   "category": "widgets",
   "icon": "smiley",
-  "description": "Sretw custom card block with title, subtitle and image",
+  "description": "Style card block with title, subtitle and image",
   "example": {},
   "attributes": {
     "title": {
@@ -31,6 +31,15 @@
       "type": "string"
     },
     "subtitleAlignment": {
+      "type": "string"
+    },
+    "cardEnlarge": {
+      "type": "boolean"
+    },
+    "cardEnlargeScale": {
+      "type": "string"
+    },
+    "cardEnlargeSpeed": {
       "type": "string"
     }
   },

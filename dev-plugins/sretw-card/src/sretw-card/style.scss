@@ -12,7 +12,7 @@
 	box-shadow: 0 3px 10px black;
 	width: fit-content;
 	height: fit-content;
-	transition: all 0.3s ease-in-out;
+	transition: all var(--card-enlarge-speed) ease-in-out;
 
 	.title {
 		padding: 4px 4px 0px 4px;
@@ -29,7 +29,11 @@
 	}
 }
 
-.wp-block-create-block-sretw-card:hover {
-	z-index: 1;
-	scale: 1.2;
+.wp-block-create-block-sretw-card-hover {
+	@extend .wp-block-create-block-sretw-card;
+	&:hover {
+		z-index: 1;
+		// scale: var(--card-enlarge-scale);
+		transform: scale(var(--card-enlarge-scale));
+	}
 }

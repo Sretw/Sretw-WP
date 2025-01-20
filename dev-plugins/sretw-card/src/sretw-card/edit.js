@@ -35,6 +35,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
+import { ToggleControl } from "@wordpress/components";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -45,100 +46,118 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
-const fontSizes = [
-	{
-		name: __("S"),
-		slug: "small",
-		size: 13,
-	},
-	{
-		name: __("M"),
-		slug: "medium",
-		size: 20,
-	},
-	{
-		name: __("L"),
-		slug: "big",
-		size: 36,
-	},
-];
-const fallbackFontSize = 12;
+import {
+	clamp0Inf,
+	clamp1Inf,
+	getCardEnlargeScaleValue,
+	getCardEnlargeSpeedValue,
+} from "./utils";
+import {
+	fontSizes,
+	fallbackFontSize,
+	fontWeights,
+	fallbackFontWeight,
+	fallbackCardEnalrgeScale,
+	fallbackCardEnalrgeSpeed,
+} from "./constant";
+// const fontSizes = [
+// 	{
+// 		name: __("S"),
+// 		slug: "small",
+// 		size: 13,
+// 	},
+// 	{
+// 		name: __("M"),
+// 		slug: "medium",
+// 		size: 20,
+// 	},
+// 	{
+// 		name: __("L"),
+// 		slug: "big",
+// 		size: 36,
+// 	},
+// ];
+// const fallbackFontSize = 12;
 
-const fontWeights = [
-	{
-		label: "normal",
-		value: "normal",
-	},
-	{
-		label: "bold",
-		value: "bold",
-	},
-	{
-		label: "lighter",
-		value: "lighter",
-	},
-	{
-		label: "bolder",
-		value: "bolder",
-	},
-	{
-		label: "100",
-		value: "100",
-	},
-	{
-		label: "200",
-		value: "200",
-	},
-	{
-		label: "300",
-		value: "300",
-	},
-	{
-		label: "400",
-		value: "400",
-	},
-	{
-		label: "500",
-		value: "500",
-	},
-	{
-		label: "600",
-		value: "600",
-	},
-	{
-		label: "700",
-		value: "700",
-	},
-	{
-		label: "800",
-		value: "800",
-	},
-	{
-		label: "900",
-		value: "900",
-	},
-	{
-		label: "inherit",
-		value: "inherit",
-	},
-	{
-		label: "initial",
-		value: "initial",
-	},
-	{
-		label: "revert",
-		value: "revert",
-	},
-	{
-		label: "revert-layer",
-		value: "revert-layer",
-	},
-	{
-		label: "unset",
-		value: "unset",
-	},
-];
-const fallbackFontWeight = "normal";
+// const fontWeights = [
+// 	{
+// 		label: "normal",
+// 		value: "normal",
+// 	},
+// 	{
+// 		label: "bold",
+// 		value: "bold",
+// 	},
+// 	{
+// 		label: "lighter",
+// 		value: "lighter",
+// 	},
+// 	{
+// 		label: "bolder",
+// 		value: "bolder",
+// 	},
+// 	{
+// 		label: "100",
+// 		value: "100",
+// 	},
+// 	{
+// 		label: "200",
+// 		value: "200",
+// 	},
+// 	{
+// 		label: "300",
+// 		value: "300",
+// 	},
+// 	{
+// 		label: "400",
+// 		value: "400",
+// 	},
+// 	{
+// 		label: "500",
+// 		value: "500",
+// 	},
+// 	{
+// 		label: "600",
+// 		value: "600",
+// 	},
+// 	{
+// 		label: "700",
+// 		value: "700",
+// 	},
+// 	{
+// 		label: "800",
+// 		value: "800",
+// 	},
+// 	{
+// 		label: "900",
+// 		value: "900",
+// 	},
+// 	{
+// 		label: "inherit",
+// 		value: "inherit",
+// 	},
+// 	{
+// 		label: "initial",
+// 		value: "initial",
+// 	},
+// 	{
+// 		label: "revert",
+// 		value: "revert",
+// 	},
+// 	{
+// 		label: "revert-layer",
+// 		value: "revert-layer",
+// 	},
+// 	{
+// 		label: "unset",
+// 		value: "unset",
+// 	},
+// ];
+// const fallbackFontWeight = "normal";
+
+// const fallbackCardEnalrgeScale = 1.2;
+
+// const fallbackCardEnalrgeSpeed = 0.65;
 
 export default function Edit(props) {
 	const {
@@ -151,16 +170,78 @@ export default function Edit(props) {
 			subtitleFontSize,
 			subtitleFontWeight,
 			subtitleAlignment,
+			cardEnlarge,
+			cardEnlargeScale,
+			cardEnlargeSpeed,
 		},
 		setAttributes,
 	} = props;
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps({
+		className: cardEnlarge
+			? "wp-block-create-block-sretw-card-hover"
+			: "wp-block-create-block-sretw-card",
+		style: {
+			"--card-enlarge-scale":
+				String(cardEnlargeScale) || `${fallbackCardEnalrgeScale}`,
+			"--card-enlarge-speed":
+				`${String(cardEnlargeSpeed)}` || `${fallbackCardEnalrgeSpeed}s`,
+		},
+	});
 	const innerBlockProps = useInnerBlocksProps();
 	// console.log(props);
 
 	return (
 		<>
 			<InspectorControls>
+				<PanelBody title={__("Card", "sretw-card")} initialOpen={false}>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={__("Hover enlarge", "sretw-card")}
+						checked={cardEnlarge || false}
+						onChange={(value) =>
+							setAttributes({
+								cardEnlarge: value,
+								//pre-set value for scale
+								cardEnlargeScale: cardEnlargeScale
+									? `${cardEnlargeScale}`
+									: `${fallbackCardEnalrgeScale}`,
+								// pre-set value for speed
+								cardEnlargeSpeed: cardEnlargeSpeed
+									? `${cardEnlargeSpeed}s`
+									: `${fallbackCardEnalrgeSpeed}s`,
+							})
+						}
+					/>
+					{cardEnlarge && (
+						<>
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={__("Hover enlarge scale", "srewt-card")}
+								type="number"
+								value={getCardEnlargeScaleValue(cardEnlargeScale)}
+								onChange={(value) =>
+									setAttributes({
+										cardEnlargeScale: `${clamp1Inf(parseFloat(value))}`,
+									})
+								}
+							/>
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={__("Hover enlarge speed", "srewt-card")}
+								help={__("Unit in seconds", "sretw-card")}
+								type="number"
+								value={getCardEnlargeSpeedValue(cardEnlargeSpeed)}
+								onChange={(value) =>
+									setAttributes({
+										cardEnlargeSpeed: `${clamp0Inf(parseFloat(value))}s`,
+									})
+								}
+							/>
+						</>
+					)}
+				</PanelBody>
 				<PanelBody title={__("Title", "sretw-card")} initialOpen={false}>
 					<TextControl
 						__next40pxDefaultSize

@@ -26,9 +26,22 @@ export default function save(props) {
 			subtitleFontSize,
 			subtitleFontWeight,
 			subtitleAlignment,
+			cardEnlarge,
+			cardEnlargeScale,
+			cardEnlargeSpeed,
 		},
 	} = props;
-	const blockProps = useBlockProps.save();
+	const blockProps = useBlockProps.save({
+		className: cardEnlarge
+			? "wp-block-create-block-sretw-card-hover"
+			: "wp-block-create-block-sretw-card",
+		style: {
+			"--card-enlarge-scale": cardEnlargeScale || "1.2",
+			"--card-enlarge-speed": cardEnlargeSpeed
+				? `${String(cardEnlargeSpeed)}`
+				: "0.65s",
+		},
+	});
 	// console.log(props);
 	return (
 		<div {...blockProps}>
