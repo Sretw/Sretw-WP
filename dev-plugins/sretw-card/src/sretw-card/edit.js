@@ -78,14 +78,20 @@ export default function Edit(props) {
 		},
 		setAttributes,
 	} = props;
+	/**
+	 * Block combine with dynamic value
+	 * Look into style.scss
+	 */
 	const blockProps = useBlockProps({
 		className: cardEnlarge
 			? "wp-block-create-block-sretw-card-hover"
 			: "wp-block-create-block-sretw-card",
 		style: {
+			// Setting card enalrge scale variable in scss
 			"--card-enlarge-scale":
 				String(cardEnlargeScale) || `${fallbackCardEnalrgeScale}`,
-			"--card-enlarge-speed":
+			// Setting card enalrge duration variable in scss
+			"--card-enlarge-duration":
 				`${String(cardEnlargeDuration)}` || `${fallbackCardEnalrgeDuration}s`,
 		},
 	});
@@ -94,7 +100,9 @@ export default function Edit(props) {
 
 	return (
 		<>
+			{/* for admin control panel */}
 			<InspectorControls>
+				{/* General card setting */}
 				<PanelBody title={__("Card", "sretw-card")} initialOpen={false}>
 					<ToggleControl
 						__nextHasNoMarginBottom
@@ -144,6 +152,8 @@ export default function Edit(props) {
 						</>
 					)}
 				</PanelBody>
+
+				{/* General title setting */}
 				<PanelBody title={__("Title", "sretw-card")} initialOpen={false}>
 					<TextControl
 						__next40pxDefaultSize
@@ -187,6 +197,8 @@ export default function Edit(props) {
 						</>
 					)}
 				</PanelBody>
+
+				{/* General subtitle setting */}
 				<PanelBody title={__("Subtitle", "sretw-card")} initialOpen={false}>
 					<TextControl
 						__next40pxDefaultSize
@@ -233,6 +245,8 @@ export default function Edit(props) {
 					)}
 				</PanelBody>
 			</InspectorControls>
+
+			{/* Block rendering for admin*/}
 			<div {...blockProps}>
 				{title && (
 					<div

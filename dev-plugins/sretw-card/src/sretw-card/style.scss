@@ -5,6 +5,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+// Basic style
 .wp-block-create-block-sretw-card {
 	padding: 8px;
 	border-radius: 4px;
@@ -12,7 +13,7 @@
 	box-shadow: 0 3px 10px black;
 	width: fit-content;
 	height: fit-content;
-	transition: all var(--card-enlarge-speed) ease-in-out;
+	transition: all var(--card-enlarge-duration) ease-in-out;
 
 	.title {
 		padding: 4px 4px 0px 4px;
@@ -29,7 +30,9 @@
 	}
 }
 
+// Style when mouse hover
 .wp-block-create-block-sretw-card-hover {
+	// Extended from basic style
 	@extend .wp-block-create-block-sretw-card;
 	&:hover {
 		z-index: 1;

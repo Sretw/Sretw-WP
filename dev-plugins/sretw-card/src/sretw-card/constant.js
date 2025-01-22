@@ -1,5 +1,8 @@
 import { __ } from "@wordpress/i18n";
 
+/**
+ * Admin panel font size options
+ */
 export const fontSizes = [
 	{
 		name: __("S"),
@@ -17,8 +20,15 @@ export const fontSizes = [
 		size: 36,
 	},
 ];
+
+/**
+ * Fallback font size
+ */
 export const fallbackFontSize = 12;
 
+/**
+ * Admin panel font weight options
+ */
 export const fontWeights = [
 	{
 		label: "normal",
@@ -93,8 +103,19 @@ export const fontWeights = [
 		value: "unset",
 	},
 ];
+
+/**
+ * Fallback font weight
+ */
 export const fallbackFontWeight = "normal";
 
+/**
+ * Fallback card enlarge scale when mouse hover
+ */
 export const fallbackCardEnalrgeScale = 1.2;
 
+/**
+ * Fallback card enlarge duration for transition
+ * when mouse hover
+ */
 export const fallbackCardEnalrgeDuration = 0.65;
