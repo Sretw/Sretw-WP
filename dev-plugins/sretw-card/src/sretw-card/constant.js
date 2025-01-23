@@ -119,3 +119,8 @@ export const fallbackCardEnalrgeScale = 1.2;
  * when mouse hover
  */
 export const fallbackCardEnalrgeDuration = 0.65;
+
+/**
+ * Fallback card border radius
+ */
+export const fallbackCardBorderRadius = 8;

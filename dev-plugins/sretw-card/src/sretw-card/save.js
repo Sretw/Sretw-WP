@@ -5,6 +5,11 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import {
+	fallbackCardBorderRadius,
+	fallbackCardEnalrgeDuration,
+	fallbackCardEnalrgeScale,
+} from "./constant";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -29,6 +34,7 @@ export default function save(props) {
 			cardEnlarge,
 			cardEnlargeScale,
 			cardEnlargeDuration,
+			cardBorderRadius,
 		},
 	} = props;
 	const blockProps = useBlockProps.save({
@@ -36,10 +42,17 @@ export default function save(props) {
 			? "wp-block-create-block-sretw-card-hover"
 			: "wp-block-create-block-sretw-card",
 		style: {
-			"--card-enlarge-scale": cardEnlargeScale || "1.2",
-			"--card-enlarge-speed": cardEnlargeDuration
+			"--card-border-radius": cardBorderRadius
+				? String(cardBorderRadius)
+				: `${fallbackCardBorderRadius}px`,
+			// Setting card enalrge scale variable in scss
+			"--card-enlarge-scale": cardEnlargeScale
+				? String(cardEnlargeScale)
+				: `${fallbackCardEnalrgeScale}`,
+			// Setting card enalrge duration variable in scss
+			"--card-enlarge-duration": cardEnlargeDuration
 				? `${String(cardEnlargeDuration)}`
-				: "0.65s",
+				: `${fallbackCardEnalrgeDuration}s`,
 		},
 	});
 	// console.log(props);

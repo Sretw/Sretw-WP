@@ -33,6 +33,9 @@
     "subtitleAlignment": {
       "type": "string"
     },
+    "cardBorderRadius": {
+      "type": "string"
+    },
     "cardEnlarge": {
       "type": "boolean"
     },

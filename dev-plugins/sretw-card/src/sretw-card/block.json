@@ -17,6 +17,7 @@
 		"subtitleFontSize": { "type": "integer" },
 		"subtitleFontWeight": { "type": "string" },
 		"subtitleAlignment": { "type": "string" },
+		"cardBorderRadius": { "type": "string" },
 		"cardEnlarge": { "type": "boolean" },
 		"cardEnlargeScale": { "type": "string" },
 		"cardEnlargeDuration": { "type": "string" }

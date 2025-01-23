@@ -1,6 +1,7 @@
 import {
 	fallbackCardEnalrgeScale,
 	fallbackCardEnalrgeDuration,
+	fallbackCardBorderRadius,
 } from "./constant";
 
 /**
@@ -35,6 +36,23 @@ export const getCardEnlargeScaleValue = (value) => {
 		return parsedValue;
 	}
 	return 1;
+};
+
+/**
+ * Convert getCardBorderRadiusValue from string to number
+ * @param {*} value in `string` e.g 1
+ * @returns
+ * - `number` if value can be parsed to int
+ * - return fallback value if value is `undefined`
+ * - return `1` if value can not be parsed to int
+ */
+export const getCardBorderRadiusValue = (value) => {
+	if (value === undefined) return fallbackCardBorderRadius;
+	let parsedValue = parseInt(value);
+	if (!isNaN(parsedValue)) {
+		return parsedValue;
+	}
+	return 0;
 };
 
 /**

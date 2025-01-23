@@ -51,6 +51,7 @@ import {
 	clamp1Inf,
 	getCardEnlargeScaleValue,
 	getCardEnlargeDurationValue,
+	getCardBorderRadiusValue,
 } from "./utils";
 import {
 	fontSizes,
@@ -59,6 +60,7 @@ import {
 	fallbackFontWeight,
 	fallbackCardEnalrgeScale,
 	fallbackCardEnalrgeDuration,
+	fallbackCardBorderRadius,
 } from "./constant";
 
 export default function Edit(props) {
@@ -75,9 +77,11 @@ export default function Edit(props) {
 			cardEnlarge,
 			cardEnlargeScale,
 			cardEnlargeDuration,
+			cardBorderRadius,
 		},
 		setAttributes,
 	} = props;
+
 	/**
 	 * Block combine with dynamic value
 	 * Look into style.scss
@@ -87,12 +91,17 @@ export default function Edit(props) {
 			? "wp-block-create-block-sretw-card-hover"
 			: "wp-block-create-block-sretw-card",
 		style: {
+			"--card-border-radius": cardBorderRadius
+				? String(cardBorderRadius)
+				: `${fallbackCardBorderRadius}px`,
 			// Setting card enalrge scale variable in scss
-			"--card-enlarge-scale":
-				String(cardEnlargeScale) || `${fallbackCardEnalrgeScale}`,
+			"--card-enlarge-scale": cardEnlargeScale
+				? String(cardEnlargeScale)
+				: `${fallbackCardEnalrgeScale}`,
 			// Setting card enalrge duration variable in scss
-			"--card-enlarge-duration":
-				`${String(cardEnlargeDuration)}` || `${fallbackCardEnalrgeDuration}s`,
+			"--card-enlarge-duration": cardEnlargeDuration
+				? `${String(cardEnlargeDuration)}`
+				: `${fallbackCardEnalrgeDuration}s`,
 		},
 	});
 	const innerBlockProps = useInnerBlocksProps();
@@ -104,6 +113,16 @@ export default function Edit(props) {
 			<InspectorControls>
 				{/* General card setting */}
 				<PanelBody title={__("Card", "sretw-card")} initialOpen={false}>
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						label={__("Border radius", "srewt-card")}
+						type="number"
+						value={getCardBorderRadiusValue(cardBorderRadius)}
+						onChange={(value) =>
+							setAttributes({ cardBorderRadius: `${clamp0Inf(value)}px` })
+						}
+					/>
 					<ToggleControl
 						__nextHasNoMarginBottom
 						label={__("Hover enlarge", "sretw-card")}
