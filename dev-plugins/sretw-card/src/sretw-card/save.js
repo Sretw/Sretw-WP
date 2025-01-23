@@ -56,15 +56,15 @@ export default function save(props) {
 				cardShadowColor,
 			),
 			"--card-border-radius": cardBorderRadius
-				? String(cardBorderRadius)
+				? cardBorderRadius
 				: `${fallbackCardBorderRadius}px`,
 			// Setting card enalrge scale variable in scss
 			"--card-enlarge-scale": cardEnlargeScale
-				? String(cardEnlargeScale)
+				? cardEnlargeScale
 				: `${fallbackCardEnalrgeScale}`,
 			// Setting card enalrge duration variable in scss
 			"--card-enlarge-duration": cardEnlargeDuration
-				? `${String(cardEnlargeDuration)}`
+				? cardEnlargeDuration
 				: `${fallbackCardEnalrgeDuration}s`,
 		},
 	});

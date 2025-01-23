@@ -50,11 +50,9 @@ import { ToggleControl } from "@wordpress/components";
 import {
 	clamp0Inf,
 	clamp1Inf,
-	getCardEnlargeScaleValue,
-	getCardEnlargeDurationValue,
-	getCardBorderRadiusValue,
 	stringToInt,
 	getCardShadowCSSProp,
+	stringToFloat,
 } from "./utils";
 import {
 	fontSizes,
@@ -113,15 +111,15 @@ export default function Edit(props) {
 				cardShadowColor,
 			),
 			"--card-border-radius": cardBorderRadius
-				? String(cardBorderRadius)
+				? cardBorderRadius
 				: `${fallbackCardBorderRadius}px`,
 			// Setting card enalrge scale variable in scss
 			"--card-enlarge-scale": cardEnlargeScale
-				? String(cardEnlargeScale)
+				? cardEnlargeScale
 				: `${fallbackCardEnalrgeScale}`,
 			// Setting card enalrge duration variable in scss
 			"--card-enlarge-duration": cardEnlargeDuration
-				? `${String(cardEnlargeDuration)}`
+				? cardEnlargeDuration
 				: `${fallbackCardEnalrgeDuration}s`,
 		},
 	});
@@ -215,7 +213,7 @@ export default function Edit(props) {
 							__nextHasNoMarginBottom
 							label={__("Border radius", "srewt-card")}
 							type="number"
-							value={getCardBorderRadiusValue(cardBorderRadius)}
+							value={stringToInt(cardBorderRadius, fallbackCardBorderRadius)}
 							onChange={(value) =>
 								setAttributes({ cardBorderRadius: `${clamp0Inf(value)}px` })
 							}
@@ -235,7 +233,7 @@ export default function Edit(props) {
 										: `${fallbackCardEnalrgeScale}`,
 									// pre-set value for speed
 									cardEnlargeDuration: cardEnlargeDuration
-										? `${cardEnlargeDuration}s`
+										? cardEnlargeDuration
 										: `${fallbackCardEnalrgeDuration}s`,
 								})
 							}
@@ -247,7 +245,10 @@ export default function Edit(props) {
 									__nextHasNoMarginBottom
 									label={__("Hover enlarge scale", "srewt-card")}
 									type="number"
-									value={getCardEnlargeScaleValue(cardEnlargeScale)}
+									value={stringToFloat(
+										cardEnlargeScale,
+										fallbackCardEnalrgeScale,
+									)}
 									onChange={(value) =>
 										setAttributes({
 											cardEnlargeScale: `${clamp1Inf(parseFloat(value))}`,
@@ -260,7 +261,10 @@ export default function Edit(props) {
 									label={__("Hover enlarge duration", "srewt-card")}
 									help={__("Unit in seconds", "sretw-card")}
 									type="number"
-									value={getCardEnlargeDurationValue(cardEnlargeDuration)}
+									value={stringToFloat(
+										cardEnlargeDuration,
+										fallbackCardEnalrgeDuration,
+									)}
 									onChange={(value) =>
 										setAttributes({
 											cardEnlargeDuration: `${clamp0Inf(parseFloat(value))}s`,

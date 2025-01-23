@@ -14,7 +14,6 @@
 	box-shadow: var(--card-shadow-prop);
 	width: fit-content;
 	height: fit-content;
-	transition: all var(--card-enlarge-duration) ease-in-out;
 
 	.title {
 		padding: 4px 4px 0px 4px;
@@ -35,6 +34,7 @@
 .wp-block-create-block-sretw-card-hover {
 	// Extended from basic style
 	@extend .wp-block-create-block-sretw-card;
+	transition: all var(--card-enlarge-duration) ease-in-out;
 	&:hover {
 		z-index: 1;
 		// scale: var(--card-enlarge-scale);

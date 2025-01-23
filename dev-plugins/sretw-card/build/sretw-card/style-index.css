@@ -16,7 +16,6 @@
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  transition: all var(--card-enlarge-duration) ease-in-out;
 }
 .wp-block-create-block-sretw-card .title, .wp-block-create-block-sretw-card-hover .title {
   padding: 4px 4px 0px 4px;
@@ -32,6 +31,9 @@
   justify-content: center;
 }
 
+.wp-block-create-block-sretw-card-hover {
+  transition: all var(--card-enlarge-duration) ease-in-out;
+}
 .wp-block-create-block-sretw-card-hover:hover {
   z-index: 1;
   transform: scale(var(--card-enlarge-scale));

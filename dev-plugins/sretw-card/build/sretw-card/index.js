@@ -247,11 +247,11 @@ function Edit(props) {
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
       "--card-shadow-prop": (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardShadowCSSProp)(cardShadowHorizontal, cardShadowVertical, cardShadowBlur, cardShadowSpread, cardShadowColor),
-      "--card-border-radius": cardBorderRadius ? String(cardBorderRadius) : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardBorderRadius}px`,
+      "--card-border-radius": cardBorderRadius ? cardBorderRadius : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardBorderRadius}px`,
       // Setting card enalrge scale variable in scss
-      "--card-enlarge-scale": cardEnlargeScale ? String(cardEnlargeScale) : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
+      "--card-enlarge-scale": cardEnlargeScale ? cardEnlargeScale : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
       // Setting card enalrge duration variable in scss
-      "--card-enlarge-duration": cardEnlargeDuration ? `${String(cardEnlargeDuration)}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
+      "--card-enlarge-duration": cardEnlargeDuration ? cardEnlargeDuration : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
     }
   });
   const innerBlockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)();
@@ -326,7 +326,7 @@ function Edit(props) {
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Border radius", "srewt-card"),
             type: "number",
-            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardBorderRadiusValue)(cardBorderRadius),
+            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardBorderRadius, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardBorderRadius),
             onChange: value => setAttributes({
               cardBorderRadius: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
             })
@@ -342,7 +342,7 @@ function Edit(props) {
               //pre-set value for scale
               cardEnlargeScale: cardEnlargeScale ? `${cardEnlargeScale}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
               // pre-set value for speed
-              cardEnlargeDuration: cardEnlargeDuration ? `${cardEnlargeDuration}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
+              cardEnlargeDuration: cardEnlargeDuration ? cardEnlargeDuration : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
             })
           }), cardEnlarge && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
@@ -350,7 +350,7 @@ function Edit(props) {
               __nextHasNoMarginBottom: true,
               label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge scale", "srewt-card"),
               type: "number",
-              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeScaleValue)(cardEnlargeScale),
+              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToFloat)(cardEnlargeScale, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale),
               onChange: value => setAttributes({
                 cardEnlargeScale: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp1Inf)(parseFloat(value))}`
               })
@@ -360,7 +360,7 @@ function Edit(props) {
               label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge duration", "srewt-card"),
               help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Unit in seconds", "sretw-card"),
               type: "number",
-              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeDurationValue)(cardEnlargeDuration),
+              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToFloat)(cardEnlargeDuration, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration),
               onChange: value => setAttributes({
                 cardEnlargeDuration: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
               })
@@ -628,11 +628,11 @@ function save(props) {
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
       "--card-shadow-prop": (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getCardShadowCSSProp)(cardShadowHorizontal, cardShadowVertical, cardShadowBlur, cardShadowSpread, cardShadowColor),
-      "--card-border-radius": cardBorderRadius ? String(cardBorderRadius) : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardBorderRadius}px`,
+      "--card-border-radius": cardBorderRadius ? cardBorderRadius : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardBorderRadius}px`,
       // Setting card enalrge scale variable in scss
-      "--card-enlarge-scale": cardEnlargeScale ? String(cardEnlargeScale) : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardEnalrgeScale}`,
+      "--card-enlarge-scale": cardEnlargeScale ? cardEnlargeScale : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardEnalrgeScale}`,
       // Setting card enalrge duration variable in scss
-      "--card-enlarge-duration": cardEnlargeDuration ? `${String(cardEnlargeDuration)}` : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardEnalrgeDuration}s`
+      "--card-enlarge-duration": cardEnlargeDuration ? cardEnlargeDuration : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardEnalrgeDuration}s`
     }
   });
   // console.log(props);
@@ -673,66 +673,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   clamp0Inf: () => (/* binding */ clamp0Inf),
 /* harmony export */   clamp1Inf: () => (/* binding */ clamp1Inf),
-/* harmony export */   getCardBorderRadiusValue: () => (/* binding */ getCardBorderRadiusValue),
-/* harmony export */   getCardEnlargeDurationValue: () => (/* binding */ getCardEnlargeDurationValue),
-/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue),
 /* harmony export */   getCardShadowCSSProp: () => (/* binding */ getCardShadowCSSProp),
 /* harmony export */   stringToFloat: () => (/* binding */ stringToFloat),
 /* harmony export */   stringToInt: () => (/* binding */ stringToInt)
 /* harmony export */ });
 /* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
 
-
-/**
- * Convert getCardEnlargeDurationValue from string to number
- * @param {*} value in `string` e.g 1.2s
- * @returns
- * - `number` if value can be parsed to float
- * - return fallback value if value is `undefined`
- * - return `0` if value can not be parsed to float
- */
-const getCardEnlargeDurationValue = value => {
-  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeDuration;
-  let parsedValue = parseFloat(value);
-  if (!isNaN(parsedValue)) {
-    return parsedValue;
-  }
-  return 0;
-};
-
-/**
- * Convert getCardEnlargeScaleValue from string to number
- * @param {*} value in `string` e.g 1.2
- * @returns
- * - `number` if value can be parsed to float
- * - return fallback value if value is `undefined`
- * - return `1` if value can not be parsed to float
- */
-const getCardEnlargeScaleValue = value => {
-  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardEnalrgeScale;
-  let parsedValue = parseFloat(value);
-  if (!isNaN(parsedValue)) {
-    return parsedValue;
-  }
-  return 1;
-};
-
-/**
- * Convert getCardBorderRadiusValue from string to number
- * @param {*} value in `string` e.g 1
- * @returns
- * - `number` if value can be parsed to int
- * - return fallback value if value is `undefined`
- * - return `1` if value can not be parsed to int
- */
-const getCardBorderRadiusValue = value => {
-  if (value === undefined) return _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardBorderRadius;
-  let parsedValue = parseInt(value);
-  if (!isNaN(parsedValue)) {
-    return parsedValue;
-  }
-  return 0;
-};
 
 /**
  * Convert string to integer
@@ -751,7 +697,7 @@ const stringToInt = (value, fallback = 0) => {
 
 /**
  * Convert string to float
- * @param {*} value in string e.g "10.4"
+ * @param {*} value in string e.g "10.4ms"
  * @param {*} fallback value to fallback to when conversion fail
  * @returns float or fallback value
  */
