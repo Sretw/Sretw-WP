@@ -26,6 +26,7 @@ import {
 	Flex,
 	FlexItem,
 	SelectControl,
+	ColorPicker,
 } from "@wordpress/components";
 
 /**
@@ -52,6 +53,8 @@ import {
 	getCardEnlargeScaleValue,
 	getCardEnlargeDurationValue,
 	getCardBorderRadiusValue,
+	stringToInt,
+	getCardShadowCSSProp,
 } from "./utils";
 import {
 	fontSizes,
@@ -61,7 +64,13 @@ import {
 	fallbackCardEnalrgeScale,
 	fallbackCardEnalrgeDuration,
 	fallbackCardBorderRadius,
+	fallbackCardShadowHorizontal,
+	fallbackCardShadowVertical,
+	fallbackCardShadowBlur,
+	fallbackCardShadowSpread,
+	fallbackCardShadowColor,
 } from "./constant";
+import { MenuGroup } from "@wordpress/components";
 
 export default function Edit(props) {
 	const {
@@ -78,6 +87,11 @@ export default function Edit(props) {
 			cardEnlargeScale,
 			cardEnlargeDuration,
 			cardBorderRadius,
+			cardShadowHorizontal,
+			cardShadowVertical,
+			cardShadowBlur,
+			cardShadowSpread,
+			cardShadowColor,
 		},
 		setAttributes,
 	} = props;
@@ -91,6 +105,13 @@ export default function Edit(props) {
 			? "wp-block-create-block-sretw-card-hover"
 			: "wp-block-create-block-sretw-card",
 		style: {
+			"--card-shadow-prop": getCardShadowCSSProp(
+				cardShadowHorizontal,
+				cardShadowVertical,
+				cardShadowBlur,
+				cardShadowSpread,
+				cardShadowColor,
+			),
 			"--card-border-radius": cardBorderRadius
 				? String(cardBorderRadius)
 				: `${fallbackCardBorderRadius}px`,
@@ -113,63 +134,142 @@ export default function Edit(props) {
 			<InspectorControls>
 				{/* General card setting */}
 				<PanelBody title={__("Card", "sretw-card")} initialOpen={false}>
-					<TextControl
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-						label={__("Border radius", "srewt-card")}
-						type="number"
-						value={getCardBorderRadiusValue(cardBorderRadius)}
-						onChange={(value) =>
-							setAttributes({ cardBorderRadius: `${clamp0Inf(value)}px` })
-						}
-					/>
-					<ToggleControl
-						__nextHasNoMarginBottom
-						label={__("Hover enlarge", "sretw-card")}
-						checked={cardEnlarge || false}
-						onChange={(value) =>
-							setAttributes({
-								cardEnlarge: value,
-								//pre-set value for scale
-								cardEnlargeScale: cardEnlargeScale
-									? `${cardEnlargeScale}`
-									: `${fallbackCardEnalrgeScale}`,
-								// pre-set value for speed
-								cardEnlargeDuration: cardEnlargeDuration
-									? `${cardEnlargeDuration}s`
-									: `${fallbackCardEnalrgeDuration}s`,
-							})
-						}
-					/>
-					{cardEnlarge && (
-						<>
-							<TextControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								label={__("Hover enlarge scale", "srewt-card")}
-								type="number"
-								value={getCardEnlargeScaleValue(cardEnlargeScale)}
-								onChange={(value) =>
-									setAttributes({
-										cardEnlargeScale: `${clamp1Inf(parseFloat(value))}`,
-									})
-								}
-							/>
-							<TextControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								label={__("Hover enlarge duration", "srewt-card")}
-								help={__("Unit in seconds", "sretw-card")}
-								type="number"
-								value={getCardEnlargeDurationValue(cardEnlargeDuration)}
-								onChange={(value) =>
-									setAttributes({
-										cardEnlargeDuration: `${clamp0Inf(parseFloat(value))}s`,
-									})
-								}
-							/>
-						</>
-					)}
+					<MenuGroup label={__("Box shadow")}>
+						<Flex wrap>
+							<FlexItem>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Horizontal", "srewt-card")}
+									type="number"
+									value={stringToInt(
+										cardShadowHorizontal,
+										fallbackCardShadowHorizontal,
+									)}
+									onChange={(value) =>
+										setAttributes({
+											cardShadowHorizontal: `${clamp0Inf(value)}px`,
+										})
+									}
+								/>
+							</FlexItem>
+							<FlexItem>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Vertical", "srewt-card")}
+									type="number"
+									value={stringToInt(
+										cardShadowVertical,
+										fallbackCardShadowVertical,
+									)}
+									onChange={(value) =>
+										setAttributes({
+											cardShadowVertical: `${clamp0Inf(value)}px`,
+										})
+									}
+								/>
+							</FlexItem>
+							<FlexItem>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Blur", "srewt-card")}
+									type="number"
+									value={stringToInt(cardShadowBlur, fallbackCardShadowBlur)}
+									onChange={(value) =>
+										setAttributes({ cardShadowBlur: `${clamp0Inf(value)}px` })
+									}
+								/>
+							</FlexItem>
+							<FlexItem>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Spread", "srewt-card")}
+									type="number"
+									value={stringToInt(
+										cardShadowSpread,
+										fallbackCardShadowSpread,
+									)}
+									onChange={(value) =>
+										setAttributes({ cardShadowSpread: `${clamp0Inf(value)}px` })
+									}
+								/>
+							</FlexItem>
+							<FlexItem>
+								<ColorPicker
+									defaultValue={
+										cardShadowColor ? cardShadowColor : fallbackCardShadowColor
+									}
+									onChange={(value) =>
+										setAttributes({ cardShadowColor: value })
+									}
+								/>
+							</FlexItem>
+						</Flex>
+					</MenuGroup>
+					<MenuGroup label={__("Border", "sretw-card")}>
+						<TextControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={__("Border radius", "srewt-card")}
+							type="number"
+							value={getCardBorderRadiusValue(cardBorderRadius)}
+							onChange={(value) =>
+								setAttributes({ cardBorderRadius: `${clamp0Inf(value)}px` })
+							}
+						/>
+					</MenuGroup>
+					<MenuGroup label={__("Hover", "sretw-card")}>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={__("Hover enlarge", "sretw-card")}
+							checked={cardEnlarge || false}
+							onChange={(value) =>
+								setAttributes({
+									cardEnlarge: value,
+									//pre-set value for scale
+									cardEnlargeScale: cardEnlargeScale
+										? `${cardEnlargeScale}`
+										: `${fallbackCardEnalrgeScale}`,
+									// pre-set value for speed
+									cardEnlargeDuration: cardEnlargeDuration
+										? `${cardEnlargeDuration}s`
+										: `${fallbackCardEnalrgeDuration}s`,
+								})
+							}
+						/>
+						{cardEnlarge && (
+							<>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Hover enlarge scale", "srewt-card")}
+									type="number"
+									value={getCardEnlargeScaleValue(cardEnlargeScale)}
+									onChange={(value) =>
+										setAttributes({
+											cardEnlargeScale: `${clamp1Inf(parseFloat(value))}`,
+										})
+									}
+								/>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={__("Hover enlarge duration", "srewt-card")}
+									help={__("Unit in seconds", "sretw-card")}
+									type="number"
+									value={getCardEnlargeDurationValue(cardEnlargeDuration)}
+									onChange={(value) =>
+										setAttributes({
+											cardEnlargeDuration: `${clamp0Inf(parseFloat(value))}s`,
+										})
+									}
+								/>
+							</>
+						)}
+					</MenuGroup>
 				</PanelBody>
 
 				{/* General title setting */}

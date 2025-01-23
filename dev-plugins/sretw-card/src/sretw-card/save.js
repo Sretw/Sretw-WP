@@ -10,6 +10,7 @@ import {
 	fallbackCardEnalrgeDuration,
 	fallbackCardEnalrgeScale,
 } from "./constant";
+import { getCardShadowCSSProp } from "./utils";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -35,6 +36,11 @@ export default function save(props) {
 			cardEnlargeScale,
 			cardEnlargeDuration,
 			cardBorderRadius,
+			cardShadowHorizontal,
+			cardShadowVertical,
+			cardShadowBlur,
+			cardShadowSpread,
+			cardShadowColor,
 		},
 	} = props;
 	const blockProps = useBlockProps.save({
@@ -42,6 +48,13 @@ export default function save(props) {
 			? "wp-block-create-block-sretw-card-hover"
 			: "wp-block-create-block-sretw-card",
 		style: {
+			"--card-shadow-prop": getCardShadowCSSProp(
+				cardShadowHorizontal,
+				cardShadowVertical,
+				cardShadowBlur,
+				cardShadowSpread,
+				cardShadowColor,
+			),
 			"--card-border-radius": cardBorderRadius
 				? String(cardBorderRadius)
 				: `${fallbackCardBorderRadius}px`,

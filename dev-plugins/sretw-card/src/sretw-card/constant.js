@@ -124,3 +124,28 @@ export const fallbackCardEnalrgeDuration = 0.65;
  * Fallback card border radius
  */
 export const fallbackCardBorderRadius = 8;
+
+/**
+ * Fallback card box shadow horizontal
+ */
+export const fallbackCardShadowHorizontal = 0;
+
+/**
+ * Fallback card box shadow vertical
+ */
+export const fallbackCardShadowVertical = 3;
+
+/**
+ * Fallback card box shadow blur
+ */
+export const fallbackCardShadowBlur = 10;
+
+/**
+ * Fallback card box shadow spread
+ */
+export const fallbackCardShadowSpread = 0;
+
+/**
+ * Fallback card box shadow color
+ */
+export const fallbackCardShadowColor = "#000";

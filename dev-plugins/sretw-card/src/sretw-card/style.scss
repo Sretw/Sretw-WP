@@ -10,7 +10,8 @@
 	padding: 8px;
 	border-radius: var(--card-border-radius);
 	background-color: white;
-	box-shadow: 0 3px 10px black;
+	// box-shadow: 0 3px 10px black;
+	box-shadow: var(--card-shadow-prop);
 	width: fit-content;
 	height: fit-content;
 	transition: all var(--card-enlarge-duration) ease-in-out;

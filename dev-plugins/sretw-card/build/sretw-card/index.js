@@ -13,6 +13,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fallbackCardBorderRadius: () => (/* binding */ fallbackCardBorderRadius),
 /* harmony export */   fallbackCardEnalrgeDuration: () => (/* binding */ fallbackCardEnalrgeDuration),
 /* harmony export */   fallbackCardEnalrgeScale: () => (/* binding */ fallbackCardEnalrgeScale),
+/* harmony export */   fallbackCardShadowBlur: () => (/* binding */ fallbackCardShadowBlur),
+/* harmony export */   fallbackCardShadowColor: () => (/* binding */ fallbackCardShadowColor),
+/* harmony export */   fallbackCardShadowHorizontal: () => (/* binding */ fallbackCardShadowHorizontal),
+/* harmony export */   fallbackCardShadowSpread: () => (/* binding */ fallbackCardShadowSpread),
+/* harmony export */   fallbackCardShadowVertical: () => (/* binding */ fallbackCardShadowVertical),
 /* harmony export */   fallbackFontSize: () => (/* binding */ fallbackFontSize),
 /* harmony export */   fallbackFontWeight: () => (/* binding */ fallbackFontWeight),
 /* harmony export */   fontSizes: () => (/* binding */ fontSizes),
@@ -124,6 +129,31 @@ const fallbackCardEnalrgeDuration = 0.65;
  */
 const fallbackCardBorderRadius = 8;
 
+/**
+ * Fallback card box shadow horizontal
+ */
+const fallbackCardShadowHorizontal = 0;
+
+/**
+ * Fallback card box shadow vertical
+ */
+const fallbackCardShadowVertical = 3;
+
+/**
+ * Fallback card box shadow blur
+ */
+const fallbackCardShadowBlur = 10;
+
+/**
+ * Fallback card box shadow spread
+ */
+const fallbackCardShadowSpread = 0;
+
+/**
+ * Fallback card box shadow color
+ */
+const fallbackCardShadowColor = "#000";
+
 /***/ }),
 
 /***/ "./src/sretw-card/edit.js":
@@ -184,6 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function Edit(props) {
   const {
     attributes: {
@@ -198,7 +229,12 @@ function Edit(props) {
       cardEnlarge,
       cardEnlargeScale,
       cardEnlargeDuration,
-      cardBorderRadius
+      cardBorderRadius,
+      cardShadowHorizontal,
+      cardShadowVertical,
+      cardShadowBlur,
+      cardShadowSpread,
+      cardShadowColor
     },
     setAttributes
   } = props;
@@ -210,6 +246,7 @@ function Edit(props) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
+      "--card-shadow-prop": (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardShadowCSSProp)(cardShadowHorizontal, cardShadowVertical, cardShadowBlur, cardShadowSpread, cardShadowColor),
       "--card-border-radius": cardBorderRadius ? String(cardBorderRadius) : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardBorderRadius}px`,
       // Setting card enalrge scale variable in scss
       "--card-enlarge-scale": cardEnlargeScale ? String(cardEnlargeScale) : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
@@ -225,46 +262,109 @@ function Edit(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Card", "sretw-card"),
         initialOpen: false,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-          __next40pxDefaultSize: true,
-          __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Border radius", "srewt-card"),
-          type: "number",
-          value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardBorderRadiusValue)(cardBorderRadius),
-          onChange: value => setAttributes({
-            cardBorderRadius: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuGroup, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Box shadow"),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+            wrap: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+                __next40pxDefaultSize: true,
+                __nextHasNoMarginBottom: true,
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Horizontal", "srewt-card"),
+                type: "number",
+                value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowHorizontal, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowHorizontal),
+                onChange: value => setAttributes({
+                  cardShadowHorizontal: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+                __next40pxDefaultSize: true,
+                __nextHasNoMarginBottom: true,
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Vertical", "srewt-card"),
+                type: "number",
+                value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowVertical, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowVertical),
+                onChange: value => setAttributes({
+                  cardShadowVertical: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+                __next40pxDefaultSize: true,
+                __nextHasNoMarginBottom: true,
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Blur", "srewt-card"),
+                type: "number",
+                value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowBlur, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowBlur),
+                onChange: value => setAttributes({
+                  cardShadowBlur: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+                __next40pxDefaultSize: true,
+                __nextHasNoMarginBottom: true,
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Spread", "srewt-card"),
+                type: "number",
+                value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowSpread, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowSpread),
+                onChange: value => setAttributes({
+                  cardShadowSpread: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+                defaultValue: cardShadowColor ? cardShadowColor : _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowColor,
+                onChange: value => setAttributes({
+                  cardShadowColor: value
+                })
+              })
+            })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-          __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge", "sretw-card"),
-          checked: cardEnlarge || false,
-          onChange: value => setAttributes({
-            cardEnlarge: value,
-            //pre-set value for scale
-            cardEnlargeScale: cardEnlargeScale ? `${cardEnlargeScale}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
-            // pre-set value for speed
-            cardEnlargeDuration: cardEnlargeDuration ? `${cardEnlargeDuration}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
-          })
-        }), cardEnlarge && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuGroup, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Border", "sretw-card"),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             __next40pxDefaultSize: true,
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge scale", "srewt-card"),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Border radius", "srewt-card"),
             type: "number",
-            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeScaleValue)(cardEnlargeScale),
+            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardBorderRadiusValue)(cardBorderRadius),
             onChange: value => setAttributes({
-              cardEnlargeScale: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp1Inf)(parseFloat(value))}`
+              cardBorderRadius: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-            __next40pxDefaultSize: true,
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuGroup, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover", "sretw-card"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge duration", "srewt-card"),
-            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Unit in seconds", "sretw-card"),
-            type: "number",
-            value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeDurationValue)(cardEnlargeDuration),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge", "sretw-card"),
+            checked: cardEnlarge || false,
             onChange: value => setAttributes({
-              cardEnlargeDuration: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
+              cardEnlarge: value,
+              //pre-set value for scale
+              cardEnlargeScale: cardEnlargeScale ? `${cardEnlargeScale}` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeScale}`,
+              // pre-set value for speed
+              cardEnlargeDuration: cardEnlargeDuration ? `${cardEnlargeDuration}s` : `${_constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardEnalrgeDuration}s`
             })
+          }), cardEnlarge && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+              __next40pxDefaultSize: true,
+              __nextHasNoMarginBottom: true,
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge scale", "srewt-card"),
+              type: "number",
+              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeScaleValue)(cardEnlargeScale),
+              onChange: value => setAttributes({
+                cardEnlargeScale: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp1Inf)(parseFloat(value))}`
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+              __next40pxDefaultSize: true,
+              __nextHasNoMarginBottom: true,
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hover enlarge duration", "srewt-card"),
+              help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Unit in seconds", "sretw-card"),
+              type: "number",
+              value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getCardEnlargeDurationValue)(cardEnlargeDuration),
+              onChange: value => setAttributes({
+                cardEnlargeDuration: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(parseFloat(value))}s`
+              })
+            })]
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -479,14 +579,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/sretw-card/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
 
 
 
@@ -514,12 +616,18 @@ function save(props) {
       cardEnlarge,
       cardEnlargeScale,
       cardEnlargeDuration,
-      cardBorderRadius
+      cardBorderRadius,
+      cardShadowHorizontal,
+      cardShadowVertical,
+      cardShadowBlur,
+      cardShadowSpread,
+      cardShadowColor
     }
   } = props;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
     className: cardEnlarge ? "wp-block-create-block-sretw-card-hover" : "wp-block-create-block-sretw-card",
     style: {
+      "--card-shadow-prop": (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getCardShadowCSSProp)(cardShadowHorizontal, cardShadowVertical, cardShadowBlur, cardShadowSpread, cardShadowColor),
       "--card-border-radius": cardBorderRadius ? String(cardBorderRadius) : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardBorderRadius}px`,
       // Setting card enalrge scale variable in scss
       "--card-enlarge-scale": cardEnlargeScale ? String(cardEnlargeScale) : `${_constant__WEBPACK_IMPORTED_MODULE_1__.fallbackCardEnalrgeScale}`,
@@ -528,9 +636,9 @@ function save(props) {
     }
   });
   // console.log(props);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     ...blockProps,
-    children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "text-center title",
       style: {
         fontSize: titleFontSize,
@@ -538,7 +646,7 @@ function save(props) {
         textAlign: titleAlignment || "center"
       },
       children: title
-    }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), subtitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "text-center subtitle",
       style: {
         fontSize: subtitleFontSize,
@@ -546,9 +654,9 @@ function save(props) {
         textAlign: subtitleAlignment || "center"
       },
       children: subtitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "image-container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {})
     })]
   });
 }
@@ -567,7 +675,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   clamp1Inf: () => (/* binding */ clamp1Inf),
 /* harmony export */   getCardBorderRadiusValue: () => (/* binding */ getCardBorderRadiusValue),
 /* harmony export */   getCardEnlargeDurationValue: () => (/* binding */ getCardEnlargeDurationValue),
-/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue)
+/* harmony export */   getCardEnlargeScaleValue: () => (/* binding */ getCardEnlargeScaleValue),
+/* harmony export */   getCardShadowCSSProp: () => (/* binding */ getCardShadowCSSProp),
+/* harmony export */   stringToFloat: () => (/* binding */ stringToFloat),
+/* harmony export */   stringToInt: () => (/* binding */ stringToInt)
 /* harmony export */ });
 /* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ "./src/sretw-card/constant.js");
 
@@ -624,9 +735,57 @@ const getCardBorderRadiusValue = value => {
 };
 
 /**
+ * Convert string to integer
+ * @param {*} value in string e.g "12px"
+ * @param {*} fallback value to fallback to when conversion fail
+ * @returns integer or fallback value
+ */
+const stringToInt = (value, fallback = 0) => {
+  if (value === undefined) return fallback;
+  let parsedValue = parseInt(value);
+  if (!isNaN(parsedValue)) {
+    return parsedValue;
+  }
+  return fallback;
+};
+
+/**
+ * Convert string to float
+ * @param {*} value in string e.g "10.4"
+ * @param {*} fallback value to fallback to when conversion fail
+ * @returns float or fallback value
+ */
+const stringToFloat = (value, fallback = 0.0) => {
+  if (value === undefined) return fallback;
+  let parsedValue = parseFloat(value);
+  if (!isNaN(parsedValue)) {
+    return parsedValue;
+  }
+  return fallback;
+};
+
+/**
+ * Get css for box-shadow in string
+ * @param {*} h horizontal in px
+ * @param {*} v vertical in px
+ * @param {*} sBlur blur in px
+ * @param {*} spread spread in px
+ * @param {*} color hex value
+ * @returns string in css for box-shadow
+ */
+const getCardShadowCSSProp = (h, v, sBlur, spread, color) => {
+  let sHorizontal = h ? h : `${_constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardShadowHorizontal}px`;
+  let sVertial = v ? v : `${_constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardShadowVertical}px`;
+  let sBlurring = sBlur ? sBlur : `${_constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardShadowBlur}px`;
+  let sSpread = spread ? spread : `${_constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardShadowSpread}px`;
+  let sColor = color ? color : _constant__WEBPACK_IMPORTED_MODULE_0__.fallbackCardShadowColor;
+  return `${sHorizontal} ${sVertial} ${sBlurring} ${sSpread} ${sColor}`;
+};
+
+/**
  * Clamp value between 1 ~ infinity
- * @param {*} value
- * @param {*} fallback
+ * @param {*} value number
+ * @param {*} fallback the number to fallback to
  * @returns clamped value
  */
 const clamp1Inf = (value, fallback = 1.0) => {
@@ -636,8 +795,8 @@ const clamp1Inf = (value, fallback = 1.0) => {
 
 /**
  * Clamp value between 0.0 ~ infinity
- * @param {*} value
- * @param {*} fallback
+ * @param {*} value number
+ * @param {*} fallback the number to fallback to
  * @returns clamped value
  */
 const clamp0Inf = (value, fallback = 0.0) => {
@@ -727,7 +886,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.1","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardBorderRadius":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeDuration":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.1","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardShadowHorizontal":{"type":"string"},"cardShadowVertical":{"type":"string"},"cardShadowBlur":{"type":"string"},"cardShadowSpread":{"type":"string"},"cardShadowColor":{"type":"string"},"cardBorderRadius":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeDuration":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

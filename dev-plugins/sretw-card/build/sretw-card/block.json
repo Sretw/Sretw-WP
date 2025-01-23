@@ -33,6 +33,21 @@
     "subtitleAlignment": {
       "type": "string"
     },
+    "cardShadowHorizontal": {
+      "type": "string"
+    },
+    "cardShadowVertical": {
+      "type": "string"
+    },
+    "cardShadowBlur": {
+      "type": "string"
+    },
+    "cardShadowSpread": {
+      "type": "string"
+    },
+    "cardShadowColor": {
+      "type": "string"
+    },
     "cardBorderRadius": {
       "type": "string"
     },
