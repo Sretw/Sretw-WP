@@ -274,7 +274,7 @@ function Edit(props) {
                 type: "number",
                 value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowHorizontal, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowHorizontal),
                 onChange: value => setAttributes({
-                  cardShadowHorizontal: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                  cardShadowHorizontal: `${value}px`
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
@@ -285,7 +285,7 @@ function Edit(props) {
                 type: "number",
                 value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowVertical, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowVertical),
                 onChange: value => setAttributes({
-                  cardShadowVertical: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                  cardShadowVertical: `${value}px`
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
@@ -307,7 +307,7 @@ function Edit(props) {
                 type: "number",
                 value: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.stringToInt)(cardShadowSpread, _constant__WEBPACK_IMPORTED_MODULE_5__.fallbackCardShadowSpread),
                 onChange: value => setAttributes({
-                  cardShadowSpread: `${(0,_utils__WEBPACK_IMPORTED_MODULE_4__.clamp0Inf)(value)}px`
+                  cardShadowSpread: `${value}px`
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, {
@@ -832,7 +832,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.1.1","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardShadowHorizontal":{"type":"string"},"cardShadowVertical":{"type":"string"},"cardShadowBlur":{"type":"string"},"cardShadowSpread":{"type":"string"},"cardShadowColor":{"type":"string"},"cardBorderRadius":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeDuration":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/sretw-card","version":"1.2.0","title":"Sretw Card","category":"widgets","icon":"smiley","description":"Style card block with title, subtitle and image","example":{},"attributes":{"title":{"type":"string"},"titleFontSize":{"type":"integer"},"titleFontWeight":{"type":"string"},"titleAlignment":{"type":"string"},"subtitle":{"type":"string"},"subtitleFontSize":{"type":"integer"},"subtitleFontWeight":{"type":"string"},"subtitleAlignment":{"type":"string"},"cardShadowHorizontal":{"type":"string"},"cardShadowVertical":{"type":"string"},"cardShadowBlur":{"type":"string"},"cardShadowSpread":{"type":"string"},"cardShadowColor":{"type":"string"},"cardBorderRadius":{"type":"string"},"cardEnlarge":{"type":"boolean"},"cardEnlargeScale":{"type":"string"},"cardEnlargeDuration":{"type":"string"}},"supports":{"color":{"background":false,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"sretw-card","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

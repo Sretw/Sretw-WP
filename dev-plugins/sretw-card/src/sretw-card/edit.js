@@ -146,7 +146,7 @@ export default function Edit(props) {
 									)}
 									onChange={(value) =>
 										setAttributes({
-											cardShadowHorizontal: `${clamp0Inf(value)}px`,
+											cardShadowHorizontal: `${value}px`,
 										})
 									}
 								/>
@@ -163,7 +163,7 @@ export default function Edit(props) {
 									)}
 									onChange={(value) =>
 										setAttributes({
-											cardShadowVertical: `${clamp0Inf(value)}px`,
+											cardShadowVertical: `${value}px`,
 										})
 									}
 								/>
@@ -191,7 +191,7 @@ export default function Edit(props) {
 										fallbackCardShadowSpread,
 									)}
 									onChange={(value) =>
-										setAttributes({ cardShadowSpread: `${clamp0Inf(value)}px` })
+										setAttributes({ cardShadowSpread: `${value}px` })
 									}
 								/>
 							</FlexItem>
